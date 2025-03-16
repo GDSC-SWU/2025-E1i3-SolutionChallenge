@@ -7,6 +7,6 @@
 | Name            | Role               | Profile Image |
 |-----------------|--------------------|---------------|
 | Chaeyeon Kim    | PM/ AI/ML Developer    | |
-| Kyuwon Ha  | PM / Backend Developer | |
+| Kyuwon Ha  |  Backend Developer | |
 | Sohyun Park     | Frontend Developer | |
 | Jieun Lee     | UI/UX Designer     |  |
