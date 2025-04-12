@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 상단 상태바: 오늘 남은 당류 -->
+    <TextView
+        android:id="@+id/sugarStatusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘 남은 당류: 25g"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/sugarProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="50"
+        android:progress="25"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        app:layout_constraintTop_toBottomOf="@id/sugarStatusText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 아침 / 점심 / 저녁 / 간식 카드 -->
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/mealCardGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:columnCount="2"
+        app:layout_constraintTop_toBottomOf="@id/sugarProgressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 아침 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="8dp"
+            app:layout_columnWeight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="🍳 아침"
+                android:textSize="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 점심 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="8dp"
+            app:layout_columnWeight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="🍛 점심"
+                android:textSize="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 저녁 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="8dp"
+            app:layout_columnWeight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="🍝 저녁"
+                android:textSize="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 간식 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="8dp"
+            app:layout_columnWeight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="🍩 간식"
+                android:textSize="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.gridlayout.widget.GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

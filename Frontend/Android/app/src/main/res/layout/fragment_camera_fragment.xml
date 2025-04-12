@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".camera_fragment">
+
 
     <!-- 카메라 미리보기 화면 -->
     <androidx.camera.view.PreviewView
@@ -29,7 +31,7 @@
     <!-- android:background="@drawable/bg_capture_button" -->
     <!-- 카메라 버튼 이미지 추가 필요!!! -->
 
-    
+
     <!-- 전/후면 전환 버튼 -->
     <ImageButton
         android:id="@+id/switchCameraButton"
@@ -60,6 +62,5 @@
         android:contentDescription="갤러리 열기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
