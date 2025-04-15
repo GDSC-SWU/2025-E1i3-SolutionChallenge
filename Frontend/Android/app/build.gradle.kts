@@ -52,6 +52,6 @@ dependencies {
     implementation("androidx.gridlayout:gridlayout:1.1.0")
     implementation("com.google.firebase:firebase-auth:22.3.0") // ✅ Firebase Auth
     implementation("com.google.android.gms:play-services-auth:20.7.0") // ✅ Google 로그인
-    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.1") //막대 차트 플러그인
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0") //막대 차트 플러그인
 
 }
