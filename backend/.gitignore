@@ -42,4 +42,4 @@ bin/
 .DS_Store
 
 # Google Cloud 인증 키 파일 무시
-src/main/resources/sweet-check-firebase-adminsdk-fbsvc-c98e76606d.json
+backend/src/main/resources/sweet-check-firebase-adminsdk-fbsvc-c98e76606d.json
