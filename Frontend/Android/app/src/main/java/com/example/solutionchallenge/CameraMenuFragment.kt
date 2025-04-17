@@ -29,12 +29,12 @@ class CameraMenuFragment : Fragment() {
                 .commit()
         }
 
-        //cardMenu.setOnClickListener {
-            //👉 MenuScanStep1Fragment로 프래그먼트 전환
-          // parentFragmentManager.beginTransaction()
-              // .replace(R.id.fragmentContainer, MenuScanStep1Fragment())
-              // .addToBackStack(null)
-              // .commit()
+        cardMenu.setOnClickListener {
+            val dialog = MenuSelectDialogFragment()
+            dialog.show(parentFragmentManager, "menu_select")
         }
+
     }
-//}
+
+
+}

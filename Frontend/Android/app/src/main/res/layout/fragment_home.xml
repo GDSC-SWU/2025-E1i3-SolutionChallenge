@@ -71,6 +71,13 @@
                 android:textStyle="bold"
                 android:layout_marginTop="4dp"/>
 
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/sugarLineChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="당 섭취 분석 그래프" />
+
             <TextView
                 android:id="@+id/introText2"
                 android:layout_width="match_parent"
@@ -80,12 +87,6 @@
                 android:layout_marginTop="4dp"/>
 
             <!-- 🔹 막대 그래프 -->
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/sugarLineChart"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="당 섭취 분석 그래프"/>
 
             <!-- 🔸 사진 업로드 안내 카드 -->
             <androidx.cardview.widget.CardView
@@ -95,7 +96,7 @@
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="#FFF3E0">
+                app:cardBackgroundColor="@color/brawn_600">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -108,7 +109,8 @@
                         android:layout_height="wrap_content"
                         android:text="Record what you ate today\nwith a single photo!"
                         android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textColor="@color/gray_100"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -116,6 +118,7 @@
                         android:layout_below="@id/photoCardText1"
                         android:layout_marginTop="4dp"
                         android:text="I'll give you the right behavioural feedback"
+                        android:textColor="@color/gray_100"
                         android:textSize="14sp" />
 
                     <ImageView
@@ -156,9 +159,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="🍳 아침"
-                        android:textSize="18sp"/>
+                        android:gravity="left"
+                        android:text="🍳 Breakfast"
+                        android:textSize="20sp"/>
                 </androidx.cardview.widget.CardView>
 
                 <!-- 점심 -->
@@ -167,12 +170,12 @@
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
                     app:layout_columnWeight="1"
-                    app:cardCornerRadius="16dp">
+                    app:cardCornerRadius="20dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="🍛 점심"
+                        android:gravity="left"
+                        android:text="🍛 Lunch"
                         android:textSize="18sp"/>
                 </androidx.cardview.widget.CardView>
 
@@ -182,12 +185,12 @@
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
                     app:layout_columnWeight="1"
-                    app:cardCornerRadius="16dp">
+                    app:cardCornerRadius="20dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="🍜 저녁"
+                        android:gravity="left"
+                        android:text="🍜 Dinner"
                         android:textSize="18sp"/>
                 </androidx.cardview.widget.CardView>
 
@@ -198,7 +201,13 @@
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
                     app:layout_columnWeight="1"
-                    app:cardCornerRadius="16dp">
+                    app:cardCornerRadius="20dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="left"
+                        android:text="🍜 Snack time"
+                        android:textSize="18sp"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -206,6 +215,7 @@
                         android:text="➕ Record"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
+
                 </androidx.cardview.widget.CardView>
             </androidx.gridlayout.widget.GridLayout>
 

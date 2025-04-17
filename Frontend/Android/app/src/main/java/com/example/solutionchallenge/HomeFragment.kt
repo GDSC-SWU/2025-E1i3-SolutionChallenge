@@ -86,11 +86,11 @@ class HomeFragment : Fragment() {
                 .commit()
         }
 
-        //menuCard.setOnClickListener {
-            //requireActivity().supportFragmentManager.beginTransaction()
-                //.replace(R.id.fragmentContainer, MenuScanStep1Fragment())
-               // .addToBackStack(null)
-                //.commit()
+        menuCard.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MenuSelectDialogFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
-//}
+}
