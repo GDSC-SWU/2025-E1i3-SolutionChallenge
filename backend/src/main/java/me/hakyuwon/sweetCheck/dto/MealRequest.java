@@ -13,5 +13,5 @@ public class MealRequest {
     private String mealType;
     private double totalSugar;
     private List<MealItem> items;
-    private String test;
+
 }
