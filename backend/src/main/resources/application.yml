@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+  cloud:
+    gcp:
+      project-id: sweet-check
+      credentials:
+        location: classpath:sweet-check-firebase-adminsdk-fbsvc-c98e76606d.json
+  data:
+    firestore:
+      enabled: true
