@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_camera -> {
-                    replaceFragment(CameraFragment())
+                    replaceFragment(CameraMenuFragment())
                     true
                 }
                 R.id.nav_archive -> {
