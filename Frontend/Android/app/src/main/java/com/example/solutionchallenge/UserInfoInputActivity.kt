@@ -1,9 +1,9 @@
+package com.example.solutionchallenge
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.solutionchallenge.MainActivity
-import com.example.solutionchallenge.R
 
 // UserInfoInputActivity.kt
 class UserInfoInputActivity : AppCompatActivity() {

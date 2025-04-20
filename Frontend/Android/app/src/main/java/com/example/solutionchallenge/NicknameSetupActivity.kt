@@ -1,3 +1,5 @@
+package com.example.solutionchallenge
+
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -5,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import com.example.solutionchallenge.R
+
 
 // NicknameSetupActivity.kt
 class NicknameSetupActivity : AppCompatActivity() {
