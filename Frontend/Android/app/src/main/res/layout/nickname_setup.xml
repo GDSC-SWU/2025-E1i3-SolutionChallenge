@@ -1,0 +1,38 @@
+<!-- res/layout/nickname_setup.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- 문구: "Nice to meet You! How should I call your name?" -->
+    <TextView
+        android:id="@+id/nicknameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nice to meet You! How should I call your name?"
+        android:textSize="18sp"
+        android:gravity="left"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 닉네임 입력상자 -->
+    <EditText
+        android:id="@+id/nicknameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your nickname"
+        android:inputType="text"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Next 버튼 (활성화 비활성화 처리 필요) -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_100"
+        android:enabled="false"
+        android:text="Next"
+        android:textColor="@android:color/white" />
+</LinearLayout>

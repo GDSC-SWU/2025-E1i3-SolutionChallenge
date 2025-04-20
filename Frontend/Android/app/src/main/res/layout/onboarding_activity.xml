@@ -1,0 +1,45 @@
+<!-- res/layout/onboarding_activity.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <!-- 로고 이미지 -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_image" />
+
+    <!-- "Light sweet, life sweet, Sugar check!" -->
+    <TextView
+        android:id="@+id/mainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light sweet, life sweet,\nSugar check!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:gravity="left" />
+
+    <!-- "Simplify the stats, empower the smart choices" -->
+    <TextView
+        android:id="@+id/subText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simplify the stats\nempower the smart choices"
+        android:textSize="14sp"
+        android:gravity="left"
+        android:layout_marginTop="8dp" />
+
+    <!-- 구글 로그인 버튼 -->
+    <Button
+        android:id="@+id/googleSignInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login with Google"
+        android:layout_marginTop="20dp"
+        android:onClick="googleSignIn" />
+</LinearLayout>

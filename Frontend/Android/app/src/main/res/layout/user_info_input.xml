@@ -1,0 +1,70 @@
+<!-- res/layout/user_info_input.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- 문구: "I'd like to know you more!" -->
+    <TextView
+        android:id="@+id/moreInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'd like to know you more!"
+        android:textSize="18sp"
+        android:gravity="left"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 문구: "The information you receive now..." -->
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The information you receive now is used to calculate the appropriate value per unit."
+        android:textSize="14sp"
+        android:gravity="left"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Height 입력 -->
+    <EditText
+        android:id="@+id/heightInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Height"
+        android:inputType="number"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Weight 입력 -->
+    <EditText
+        android:id="@+id/weightInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight"
+        android:inputType="number"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Age 입력 -->
+    <EditText
+        android:id="@+id/ageInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age"
+        android:inputType="number"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Next 버튼 -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:enabled="false"
+        android:background="@color/brawn_600"
+        android:textColor="@android:color/white" />
+</LinearLayout>
