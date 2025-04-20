@@ -18,31 +18,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            replaceFragment(HomeFragment())
+            replaceFragment(HomeFragment()) // 초기 프래그먼트
         }
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navBar.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    replaceFragment(HomeFragment())
+                    replaceFragment(HomeFragment()) // 홈 프래그먼트
                     true
                 }
                 R.id.nav_camera -> {
-                    replaceFragment(CameraMenuFragment())
+                    replaceFragment(CameraMenuFragment()) // 카메라 프래그먼트
                     true
                 }
                 R.id.nav_archive -> {
-                    replaceFragment(ArchiveFragment())
-                    true
-                }
-                R.id.nav_challenge -> {
-                    replaceFragment(ChallengeFragment())
+                    replaceFragment(ArchiveFragment()) // 아카이브 프래그먼트
                     true
                 }
                 else -> false
             }
         }
     }
-
 }

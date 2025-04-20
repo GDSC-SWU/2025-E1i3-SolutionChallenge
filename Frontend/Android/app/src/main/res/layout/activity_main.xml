@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- 👇 여기가 프래그먼트가 들어갈 화면 영역 -->
+    <!-- 프래그먼트가 들어갈 화면 영역 -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation" />
 
-    <!-- ✅ 하단 네비게이션바 (제대로 된 태그!) -->
+    <!-- 하단 네비게이션바 (3개 항목으로 구성) -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
