@@ -10,10 +10,13 @@
         android:id="@+id/nicknameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nice to meet You! How should I call your name?"
-        android:textSize="18sp"
-        android:gravity="left"
-        android:layout_marginBottom="16dp" />
+        android:text="Nice to meet You! \n How should I call your name?"
+        android:textColor="@color/gray_950"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity ="center_horizontal"
+        android:layout_marginBottom="30dp" />
 
     <!-- 닉네임 입력상자 -->
     <EditText
@@ -21,18 +24,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your nickname"
+        android:textColor="@color/gray_950"
         android:inputType="text"
         android:background="@drawable/rounded_edittext"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp" />
+        android:padding="15dp"
+        android:layout_marginBottom="30dp" />
 
     <!-- Next 버튼 (활성화 비활성화 처리 필요) -->
     <Button
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_100"
-        android:enabled="false"
         android:text="Next"
-        android:textColor="@android:color/white" />
+        android:enabled="false"
+        android:background="@color/gray_300"
+        android:textColor="@color/gray_50" />
+
 </LinearLayout>

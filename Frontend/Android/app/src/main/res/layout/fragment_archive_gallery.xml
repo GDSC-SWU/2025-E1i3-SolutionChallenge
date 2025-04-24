@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- 날짜 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2025.04.21"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+
+            <!-- 이미지 4장 -->
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- 날짜 2 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2025.04.22"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2">
+
+                    <!-- 이미지 4장 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_gallery"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_gallery"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_gallery"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_gallery"/>
+                </GridLayout>
+
+                <!-- 날짜 2도 같은 방식으로 추가하면 돼 -->
+            </LinearLayout>
+        </GridLayout>
+
+        <!-- 날짜 2도 같은 방식으로 추가하면 돼 -->
+    </LinearLayout>
+
+
+</ScrollView>

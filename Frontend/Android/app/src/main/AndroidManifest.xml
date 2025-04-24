@@ -7,6 +7,8 @@
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
