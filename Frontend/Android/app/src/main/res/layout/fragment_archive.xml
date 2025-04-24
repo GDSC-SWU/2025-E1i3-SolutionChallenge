@@ -1,205 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    android:id="@+id/archiveFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/gray_50"
     android:padding="16dp">
 
-    <!-- 날짜 & 아이콘 줄 -->
     <LinearLayout
+        android:id="@+id/archiveFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/selectedDateText"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="2025.07.06"
-            android:textSize="18sp"
-            android:textColor="@color/gray_800" />
-
-        <TextView
-            android:id="@+id/calendarIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="📅"
-            android:textSize="20sp"
-            android:layout_marginEnd="12dp" />
-
-        <TextView
-            android:id="@+id/galleryIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🖼"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <!-- 캘린더 뷰 -->
-    <com.kizitonwose.calendar.view.CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
-        app:cv_daySize="rectangle"
-        app:cv_orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        app:cv_dayViewResource="@layout/day_view" />
-
-
-
-    <!-- 당 섭취량 요약 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You ate a total of 45 grams of sugar."
-        android:textSize="16sp"
-        android:textColor="@color/gray_800"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Same as about 15 sugar cubes."
-        android:textSize="14sp"
-        android:textColor="@color/gray_500"
-        android:layout_marginBottom="12dp" />
-
-    <!-- 정사각형 3x10 시각화 -->
-    <GridLayout
-        android:id="@+id/sugarGrid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="10"
-        android:rowCount="3"
-        android:layout_marginBottom="16dp">
-    </GridLayout>
-
-    <!-- 식사 기록 요약 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This day, you ate this kind of food."
-        android:textSize="16sp"
-        android:textColor="@color/gray_800"
-        android:layout_marginBottom="8dp" />
-
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/mealCardGrid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:columnCount="2">
-
-        <!-- 아침 -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:cardCornerRadius="16dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="left"
-                android:text="🍳 Breakfast"
-                android:textSize="20sp"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- 점심 -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:cardCornerRadius="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="left"
-                android:text="🍛 Lunch"
-                android:textSize="18sp"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- 저녁 -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:cardCornerRadius="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="left"
-                android:text="🍜 Dinner"
-                android:textSize="18sp"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- 간식 (Record 버튼) -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/snackCard"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_margin="8dp"
-            app:layout_columnWeight="1"
-            app:cardCornerRadius="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="left"
-                android:text="🍜 Snack time"
-                android:textSize="18sp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="➕ Record"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-        </androidx.cardview.widget.CardView>
-    </androidx.gridlayout.widget.GridLayout>
-
-    <!-- 카메라 연결 안내 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardRecord"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/brawn_600">
-
+        <!-- 날짜 & 아이콘 줄 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/selectedDateText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Record what you ate today\nwith a single photo!"
-                android:textColor="@color/gray_50"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="2025.07.06"
+                android:textSize="18sp"
+                android:textColor="@color/gray_800" />
 
             <TextView
+                android:id="@+id/calendarIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="I'll give you the right behavioural feedback"
-                android:textColor="@color/gray_50"
-                android:textSize="14sp" />
+                android:text="📅"
+                android:textSize="20sp"
+                android:layout_marginEnd="12dp" />
 
+            <TextView
+                android:id="@+id/galleryIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🖼"
+                android:textSize="20sp" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+        <!-- 캘린더 뷰 -->
+        <com.kizitonwose.calendar.view.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            app:cv_daySize="rectangle"
+            app:cv_orientation="horizontal"
+            android:layout_marginBottom="15dp"
+            app:cv_dayViewResource="@layout/day_view" />
+
+        <!-- 당 섭취량 요약 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You ate a total of 45 grams of sugar."
+            android:textSize="16sp"
+            android:textColor="@color/gray_800"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Same as about 15 sugar cubes."
+            android:textSize="14sp"
+            android:textColor="@color/gray_500"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 정사각형 3x10 시각화 -->
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/sugarGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:columnCount="10"
+            app:rowCount="3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This day, you ate this kind of food."
+            android:textSize="16sp"
+            android:textColor="@color/gray_800"
+            android:layout_marginBottom="8dp" />
+
+        <!-- 식사 기록 카드 -->
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/mealCardGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:columnCount="2">
+
+            <!-- 아침 카드 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="🍳 Breakfast"
+                    android:textSize="20sp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 점심 카드 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="🍛 Lunch"
+                    android:textSize="18sp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 저녁 카드 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="🍜 Dinner"
+                    android:textSize="18sp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 간식 카드 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/snackCard"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🍜 Snack time"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="➕ Record"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.gridlayout.widget.GridLayout>
+
+        <!-- 카메라 안내 카드 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRecord"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/brawn_600">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Record what you ate today\nwith a single photo!"
+                    android:textColor="@color/gray_50"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="I'll give you the right behavioural feedback"
+                    android:textColor="@color/gray_50"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

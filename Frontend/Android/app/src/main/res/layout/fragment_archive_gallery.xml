@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,104 +19,93 @@
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
-        <GridLayout
+        <androidx.gridlayout.widget.GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2">
+            app:columnCount="2">
 
             <!-- 이미지 4장 -->
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_margin="8dp"
-                android:layout_columnWeight="1"
+                app:layout_columnWeight="1"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"/>
+                android:src="@android:drawable/ic_menu_gallery" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_margin="8dp"
-                android:layout_columnWeight="1"
+                app:layout_columnWeight="1"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"/>
+                android:src="@android:drawable/ic_menu_gallery" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_margin="8dp"
-                android:layout_columnWeight="1"
+                app:layout_columnWeight="1"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"/>
+                android:src="@android:drawable/ic_menu_gallery" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_margin="8dp"
-                android:layout_columnWeight="1"
+                app:layout_columnWeight="1"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"/>
+                android:src="@android:drawable/ic_menu_gallery" />
+        </androidx.gridlayout.widget.GridLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp">
+        <!-- 날짜 2 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2025.04.22"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
 
-                <!-- 날짜 2 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2025.04.22"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:columnCount="2">
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="2">
+            <!-- 이미지 4장 -->
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
 
-                    <!-- 이미지 4장 -->
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_columnWeight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@android:drawable/ic_menu_gallery"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_columnWeight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@android:drawable/ic_menu_gallery"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_columnWeight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@android:drawable/ic_menu_gallery"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                app:layout_columnWeight="1"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
+        </androidx.gridlayout.widget.GridLayout>
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_columnWeight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@android:drawable/ic_menu_gallery"/>
-                </GridLayout>
-
-                <!-- 날짜 2도 같은 방식으로 추가하면 돼 -->
-            </LinearLayout>
-        </GridLayout>
-
-        <!-- 날짜 2도 같은 방식으로 추가하면 돼 -->
     </LinearLayout>
-
-
 </ScrollView>

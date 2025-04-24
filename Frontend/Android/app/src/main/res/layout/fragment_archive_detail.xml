@@ -49,13 +49,14 @@
             android:layout_marginBottom="12dp"/>
 
         <!-- 3x10 정사각형 -->
-        <GridLayout
+        <androidx.gridlayout.widget.GridLayout
             android:id="@+id/sugarCubeGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:columnCount="10"
-            android:rowCount="3" />
+            app:columnCount="10"
+            app:rowCount="3"
+            />
 
         <!-- 문구 -->
         <TextView

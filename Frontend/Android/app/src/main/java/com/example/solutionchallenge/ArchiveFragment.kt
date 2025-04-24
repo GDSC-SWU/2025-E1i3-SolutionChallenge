@@ -60,7 +60,8 @@ class ArchiveFragment : Fragment() {
     }
 
     private fun renderSugarCubes(view: View, sugarGrams: Float) {
-        val sugarGrid = view.findViewById<GridLayout>(R.id.sugarGrid)
+        val sugarGrid = view.findViewById<androidx.gridlayout.widget.GridLayout>(R.id.sugarGrid)
+
         sugarGrid.removeAllViews()
 
         val totalCubes = 30
