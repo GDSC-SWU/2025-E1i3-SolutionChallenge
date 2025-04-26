@@ -1,6 +1,8 @@
 package me.hakyuwon.sweetCheck.service;
 
 import com.google.cloud.firestore.*;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +41,9 @@ public class UserService {
                 log.error("Error saving user", e);
             }
         }, Runnable::run);
+    }
+
+    public void deleteUser(String uid) throws FirebaseAuthException {
+        FirebaseAuth.getInstance().deleteUser(uid);
     }
 }
