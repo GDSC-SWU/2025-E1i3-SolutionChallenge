@@ -15,4 +15,6 @@ public class UserController {
     public String home() {
         return "home"; // home.html 렌더링
     }
+
+
 }
