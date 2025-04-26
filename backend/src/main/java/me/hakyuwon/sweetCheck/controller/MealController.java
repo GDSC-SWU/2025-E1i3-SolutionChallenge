@@ -8,6 +8,7 @@ import me.hakyuwon.sweetCheck.dto.MealRequest;
 import me.hakyuwon.sweetCheck.dto.MealResponse;
 import me.hakyuwon.sweetCheck.enums.MealType;
 import me.hakyuwon.sweetCheck.service.MealService;
+import me.hakyuwon.sweetCheck.util.SecurityUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,15 +39,16 @@ public class MealController {
 
     // 식단 확정
     @PostMapping("/api/meals/{mealId}/confirm")
-    public ResponseEntity<String> confirmMeal(@PathVariable String mealId,
-                                            @RequestParam String userId) {
+    public ResponseEntity<String> confirmMeal(@PathVariable String mealId) {
+        String userId = SecurityUtil.getCurrentUserId();
         mealService.confirmMeal(userId, mealId);
         return ResponseEntity.ok("Meal confirmed successfully");
     }
 
-    @GetMapping("/api/meals/{mealId}/{date}")
-    public ResponseEntity<DailyMealResponse> getDailyMeals(@RequestParam String userId, @RequestParam String date // 2025-04-27 같은 형식
+    @GetMapping("/api/meals/{date}")
+    public ResponseEntity<DailyMealResponse> getDailyMeals(@PathVariable String date
     ) {
+        String userId = SecurityUtil.getCurrentUserId();
         LocalDate localDate = LocalDate.parse(date);
         DailyMealResponse response = mealService.getDailyMeals(userId, localDate);
         return ResponseEntity.ok(response);
