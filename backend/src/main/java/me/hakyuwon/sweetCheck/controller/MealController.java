@@ -1,12 +1,19 @@
 package me.hakyuwon.sweetCheck.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
 import me.hakyuwon.sweetCheck.dto.MealRequest;
+import me.hakyuwon.sweetCheck.dto.MealResponse;
 import me.hakyuwon.sweetCheck.enums.MealType;
 import me.hakyuwon.sweetCheck.service.MealService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -29,6 +36,7 @@ public class MealController {
         return ResponseEntity.ok("Meal updated successfully");
     }
 
+    // 식단 확정
     @PostMapping("/api/meals/{mealId}/confirm")
     public ResponseEntity<String> confirmMeal(@PathVariable String mealId,
                                             @RequestParam String userId) {
@@ -36,4 +44,12 @@ public class MealController {
         return ResponseEntity.ok("Meal confirmed successfully");
     }
 
+    @GetMapping("/api/meals/{mealId}/{date}")
+    public ResponseEntity<DailyMealResponse> getDailyMeals(@RequestParam String userId, @RequestParam String date // 2025-04-27 같은 형식
+    ) {
+        LocalDate localDate = LocalDate.parse(date);
+        DailyMealResponse response = mealService.getDailyMeals(userId, localDate);
+        return ResponseEntity.ok(response);
+    }
 }
+

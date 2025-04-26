@@ -1,18 +1,24 @@
 package me.hakyuwon.sweetCheck.service;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import lombok.extern.slf4j.Slf4j;
 import me.hakyuwon.sweetCheck.domain.Meal;
 import me.hakyuwon.sweetCheck.domain.MealItem;
+import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
 import me.hakyuwon.sweetCheck.dto.MealRequest;
+import me.hakyuwon.sweetCheck.dto.MealResponse;
 import me.hakyuwon.sweetCheck.enums.MealStatus;
 import me.hakyuwon.sweetCheck.enums.MealType;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -103,4 +109,46 @@ public class MealService {
             log.error("Error confirming meal", e);
         }
     }
+
+    // 일별 식사 조회
+    public DailyMealResponse getDailyMeals(String userId, LocalDate date) {
+        DailyMealResponse response = new DailyMealResponse();
+        List<Meal> meals = new ArrayList<>();
+
+        try {
+            LocalDateTime startOfDay = date.atStartOfDay();
+            LocalDateTime endOfDay = date.atTime(23, 59, 59);
+
+            Instant startInstant = startOfDay.atZone(ZoneId.systemDefault()).toInstant();
+            Instant endInstant = endOfDay.atZone(ZoneId.systemDefault()).toInstant();
+
+            Query query = firestore.collection("users")
+                    .document(userId)
+                    .collection("meals")
+                    .whereGreaterThanOrEqualTo("mealDateTime", startInstant)
+                    .whereLessThanOrEqualTo("mealDateTime", endInstant);
+
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
+
+            double dailyTotalSugar = 0.0;
+
+            for (QueryDocumentSnapshot document : documents) {
+                Meal meal = document.toObject(Meal.class);
+                meals.add(meal);
+
+                dailyTotalSugar += meal.getTotalSugar();
+            }
+
+            response.setDate(date.toString());
+            response.setDailyTotalSugar(dailyTotalSugar);
+            response.setMeals(meals);
+
+        } catch (Exception e) {
+            log.error("Error retrieving daily meals for userId: {}, date: {}", userId, date, e);
+        }
+
+        return response;
+    }
 }
+
