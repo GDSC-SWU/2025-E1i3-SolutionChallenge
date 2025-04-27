@@ -3,16 +3,16 @@
     <!-- 홈 메뉴 -->
     <item android:id="@+id/nav_home"
         android:icon="@android:drawable/ic_menu_view"
-        android:title="홈" />
+        android:title="@string/home" />
 
     <!-- 카메라 메뉴 -->
     <item android:id="@+id/nav_camera"
         android:icon="@android:drawable/ic_menu_camera"
-        android:title="카메라" />
+        android:title="@string/camera" />
 
     <!-- 아카이브 메뉴 -->
     <item android:id="@+id/nav_archive"
         android:icon="@android:drawable/ic_menu_agenda"
-        android:title="아카이브" />
+        android:title="@string/archive" />
 
 </menu>

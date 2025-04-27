@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:gravity="start"
-        android:text="You can get\nyour sugar levels\nfrom the pictures!"
+        android:layout_marginRight="30dp"
+        android:text="@string/you_can_get_nyour_sugar_levels_nfrom_the_pictures"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -38,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Record what you ate today\nwith a single photo!"
+                android:text="@string/record_what_you_ate_today_nwith_a_single_photo"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -46,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="I'll give you the right behavioural feedback"
+                android:text="@string/i_ll_give_you_the_right_behavioural_feedback"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -70,14 +71,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Are you thinking about what to eat?"
+                android:text="@string/are_you_thinking_about_what_to_eat"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you take a picture of the menu,\nI'll let you know the menu with low sugar levels."
+                android:text="@string/if_you_take_a_picture_of_the_menu_ni_ll_let_you_know_the_menu_with_low_sugar_levels"
                 android:textSize="14sp"
                 android:layout_marginTop="4dp" />
 

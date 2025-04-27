@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How would you like to scan the menu?"
+        android:text="@string/how_would_you_like_to_scan_the_menu"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
@@ -18,12 +18,12 @@
         android:id="@+id/btnGallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="📁 From Gallery" />
+        android:text="@string/from_gallery" />
 
     <Button
         android:id="@+id/btnCamera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="📷 Take a Photo"
+        android:text="@string/take_a_photo"
         android:layout_marginTop="12dp"/>
 </LinearLayout>

@@ -15,7 +15,7 @@
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Are you sure\nyou ate this?"
+            android:text="@string/are_you_sure_nyou_ate_this"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
@@ -32,20 +32,21 @@
             android:id="@+id/btnAddMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+"
+            android:text="@string/plus"
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp" />
 
-        <!-- ➡️ Next 버튼 -->
+
+        <!-- Next 버튼 프래그먼트에 연동 필요-->
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Next"
-            android:textSize="18sp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#FF9800"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:enabled="false"
+            android:background="@color/brawn_600"
+            android:layout_marginTop="300dp"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

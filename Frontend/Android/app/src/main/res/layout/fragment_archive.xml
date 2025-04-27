@@ -25,7 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="2025.07.06"
+                android:text="@string/_2025_07_06"
                 android:textSize="18sp"
                 android:textColor="@color/gray_800" />
 
@@ -33,7 +33,7 @@
                 android:id="@+id/calendarIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📅"
+                android:text="@string/calender"
                 android:textSize="20sp"
                 android:layout_marginEnd="12dp" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/galleryIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🖼"
+                android:text="@string/gallery"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You ate a total of 45 grams of sugar."
+            android:text="@string/you_ate_a_total_of_45_grams_of_sugar"
             android:textSize="16sp"
             android:textColor="@color/gray_800"
             android:layout_marginTop="8dp" />
@@ -67,7 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Same as about 15 sugar cubes."
+            android:text="@string/same_as_about_15_sugar_cubes"
             android:textSize="14sp"
             android:textColor="@color/gray_500"
             android:layout_marginBottom="12dp" />
@@ -85,7 +85,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This day, you ate this kind of food."
+            android:text="@string/this_day_you_ate_this_kind_of_food"
             android:textSize="16sp"
             android:textColor="@color/gray_800"
             android:layout_marginBottom="8dp" />
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:text="🍳 Breakfast"
+                    android:text="@string/breakfast"
                     android:textSize="20sp"/>
             </androidx.cardview.widget.CardView>
 
@@ -124,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:text="🍛 Lunch"
+                    android:text="@string/lunch"
                     android:textSize="18sp"/>
             </androidx.cardview.widget.CardView>
 
@@ -139,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:text="🍜 Dinner"
+                    android:text="@string/dinner"
                     android:textSize="18sp"/>
             </androidx.cardview.widget.CardView>
 
@@ -151,6 +151,7 @@
                 android:layout_margin="8dp"
                 app:layout_columnWeight="1"
                 app:cardCornerRadius="20dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -159,15 +160,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🍜 Snack time"
+                        android:text="@string/snack"
                         android:textSize="18sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="➕ Record"
+                        android:text="@string/record"
+                        android:gravity="center"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="8dp"/>
+                        android:textStyle="bold" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.gridlayout.widget.GridLayout>

@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="android:statusBarColor" tools:targetApi="l">#FF9800</item>
         <item name="android:textColorPrimary">#000000</item>
+        <item name="android:textColor">#000000</item>
     </style>
 
     <!-- ✅ 식사 타입 버튼 스타일 -->

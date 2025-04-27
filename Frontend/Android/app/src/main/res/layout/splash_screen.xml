@@ -1,36 +1,82 @@
-<!-- res/layout/splash_screen.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- 로고 이미지 -->
-    <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+    <!-- 중앙 콘텐츠 -->
 
-    <!-- "Light sweet, life sweet, Sugar check!" -->
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Light sweet, life sweet,\nSweet check!"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:gravity="left" />
+    <!-- 오른쪽 하단 2x2 로고 -->
 
-    <!-- "Simplify the stats, empower the smart choices" -->
-    <TextView
-        android:id="@+id/subText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Simplify the stats\nempower the smart choices"
-        android:textSize="14sp"
-        android:gravity="left"
-        android:layout_marginTop="8dp" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="120dp"
+            android:src="@mipmap/ic_launcher_small" />
+
+
+        <TextView
+            android:id="@+id/mainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="left"
+            android:text="@string/light_sweet_life_sweet_nsweet_check"
+            android:textColor="@color/gray_950"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:text="@string/simplify_the_stats_nempower_the_smart_choices"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/logoGrid"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal|right|bottom"
+        android:layout_marginLeft="120dp"
+        app:columnCount="2">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@mipmap/ic_launcher_gray" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@mipmap/ic_launcher_gray" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@mipmap/ic_launcher_gray" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@mipmap/ic_launcher" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+</FrameLayout>

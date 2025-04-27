@@ -11,22 +11,21 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- ⬅️ 뒤로가기 버튼 -->
+        <!-- ⬅️ 뒤로가기 버튼 뒤로가기 연동 필요-->
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="start"
             android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_media_previous"
-            android:contentDescription="뒤로가기" />
+            android:src="@android:drawable/ic_media_previous" />
 
         <!-- 📌 문구 -->
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="When did you\neat this?"
+            android:text="@string/when_did_you_neat_this"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="16dp" />
@@ -43,7 +42,7 @@
             android:weightSum="7">
 
             <!-- 7일치 날짜 타원형 아이콘 -->
-            <!-- 반복 구조지만 지금은 직접 작성해둘게! -->
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="60dp"
@@ -52,56 +51,89 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_margin="4dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="20" android:textStyle="bold" android:textSize="16sp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mon" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_20" android:textStyle="bold" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mon" android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1" android:background="@drawable/bg_date_item" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
-                <TextView android:text="21" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="Tue" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/_21" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/tue" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1" android:background="@drawable/bg_date_item" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
-                <TextView android:text="22" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="Wed" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/_22" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/wed" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1" android:background="@drawable/bg_date_item" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
-                <TextView android:text="23" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="Thu" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/_23" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/thu" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1" android:background="@drawable/bg_date_item" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
-                <TextView android:text="24" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="Fri" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/_24" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/fri" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1" android:background="@drawable/bg_date_item" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
-                <TextView android:text="25" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="Sat" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/_25" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/sat" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="0dp" android:layout_height="60dp" android:layout_weight="1" android:background="@drawable/bg_date_item" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
-                <TextView android:text="26" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:text="Sun" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/_26" android:textStyle="bold" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="@string/sun" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </LinearLayout>
 
         <!-- 🍽 식사 타입 선택 -->
-        <GridLayout
+        <androidx.gridlayout.widget.GridLayout
             android:id="@+id/mealTypeGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:columnCount="2"
-            android:rowCount="2">
+            app:rowCount="2">
 
-            <Button android:id="@+id/btnBreakfast" android:text="🍳 Breakfast" android:textSize="16sp" android:layout_margin="8dp" android:layout_width="0dp" android:layout_height="60dp" android:layout_columnWeight="1"/>
-            <Button android:id="@+id/btnLunch" android:text="🍛 Lunch" android:textSize="16sp" android:layout_margin="8dp" android:layout_width="0dp" android:layout_height="60dp" android:layout_columnWeight="1"/>
-            <Button android:id="@+id/btnDinner" android:text="🍜 Dinner" android:textSize="16sp" android:layout_margin="8dp" android:layout_width="0dp" android:layout_height="60dp" android:layout_columnWeight="1"/>
-            <Button android:id="@+id/btnSnack" android:text="🍩 Snack" android:textSize="16sp" android:layout_margin="8dp" android:layout_width="0dp" android:layout_height="60dp" android:layout_columnWeight="1"/>
-        </GridLayout>
+            <Button
+                android:id="@+id/btnBreakfast"
+                android:text="@string/breakfast"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_columnWeight="1" />
+
+            <Button
+                android:id="@+id/btnLunch"
+                android:text="@string/lunch"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_columnWeight="1" />
+
+            <Button
+                android:id="@+id/btnDinner"
+                android:text="@string/dinner"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_columnWeight="1" />
+
+            <Button
+                android:id="@+id/btnSnack"
+                android:text="@string/snack"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_columnWeight="1" />
+
+        </androidx.gridlayout.widget.GridLayout>
+
 
         <!-- 🖼 회색 이미지 박스 4개 -->
         <LinearLayout
@@ -131,18 +163,17 @@
             <FrameLayout android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_margin="4dp" android:background="#EEEEEE"/>
         </LinearLayout>
 
-        <!-- ➡️ NEXT 버튼 -->
+
+        <!-- Next 버튼 프래그먼트에 연동 필요 -->
         <Button
-            android:id="@+id/btnNext"
+            android:id="@+id/nextButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Next"
-            android:textSize="18sp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="#FF9800"
-            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
             android:enabled="false"
-            android:layout_gravity="center_horizontal" />
+            android:background="@color/brawn_600"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="200dp"/>
 
     </LinearLayout>
 </ScrollView>
