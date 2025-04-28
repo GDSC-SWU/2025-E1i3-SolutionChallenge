@@ -2,13 +2,12 @@ package me.hakyuwon.sweetCheck.controller;
 
 import com.google.firebase.auth.FirebaseAuthException;
 import lombok.AllArgsConstructor;
+import me.hakyuwon.sweetCheck.dto.LoginResponse;
+import me.hakyuwon.sweetCheck.dto.TokenRequest;
 import me.hakyuwon.sweetCheck.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -18,7 +17,13 @@ public class UserController {
 
     @GetMapping("/api/home")
     public String home() {
-        return "home"; // home.html 렌더링
+        return "home";
+    }
+
+    @PostMapping("/api/users/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody TokenRequest tokenRequest) {
+        LoginResponse response = userService.login(tokenRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/api/users/{uid}")
