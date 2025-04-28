@@ -20,7 +20,7 @@ public class UserService {
     @Autowired
     private final Firestore firestore;
 
-    public void saveOrUpdateUser(String email, String name, String picture) {
+    public String saveOrUpdateUser(String email, String name, String picture) {
         DocumentReference docRef = firestore.collection("users").document(email);
 
         docRef.get().addListener(() -> {
@@ -28,6 +28,7 @@ public class UserService {
             userData.put("email", email);
             userData.put("name", name);
             userData.put("profileImage", picture);
+
 
             // 새 유저면 createdAt 추가
             try {
@@ -41,6 +42,7 @@ public class UserService {
                 log.error("Error saving user", e);
             }
         }, Runnable::run);
+        return docRef.getId();
     }
 
     public void deleteUser(String uid) throws FirebaseAuthException {
