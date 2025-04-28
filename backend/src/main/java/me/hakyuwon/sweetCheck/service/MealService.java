@@ -1,7 +1,6 @@
 package me.hakyuwon.sweetCheck.service;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +8,6 @@ import me.hakyuwon.sweetCheck.domain.Meal;
 import me.hakyuwon.sweetCheck.domain.MealItem;
 import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
 import me.hakyuwon.sweetCheck.dto.MealRequest;
-import me.hakyuwon.sweetCheck.dto.MealResponse;
 import me.hakyuwon.sweetCheck.enums.MealStatus;
 import me.hakyuwon.sweetCheck.enums.MealType;
 import org.springframework.stereotype.Service;
@@ -60,7 +58,7 @@ public class MealService {
         return null;
     }
 
-    // 식사 내용 수정
+    // 식단 내용 수정
     public void updateMealDraft(String userId, String mealId, MealRequest request) {
         try {
             DocumentReference mealRef = firestore.collection("users")
@@ -74,7 +72,7 @@ public class MealService {
                     "totalSugar", request.getTotalSugar()
             ).get();
 
-            // 기존 mealItems 삭제 후 새로 저장 (깔끔하게 다시 저장)
+            // 기존 mealItems 삭제 후 새로 저장
             CollectionReference itemsRef = mealRef.collection("mealItems");
             ApiFuture<QuerySnapshot> future = itemsRef.get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
@@ -93,7 +91,7 @@ public class MealService {
         }
     }
 
-    // 식사 내용 확정
+    // 식단 내용 확정
     public void confirmMeal(String userId, String mealId) {
         try {
             DocumentReference mealRef = firestore.collection("users")
@@ -110,7 +108,7 @@ public class MealService {
         }
     }
 
-    // 일별 식사 조회
+    // 일별 식단 조회
     public DailyMealResponse getDailyMeals(String userId, LocalDate date) {
         DailyMealResponse response = new DailyMealResponse();
         List<Meal> meals = new ArrayList<>();

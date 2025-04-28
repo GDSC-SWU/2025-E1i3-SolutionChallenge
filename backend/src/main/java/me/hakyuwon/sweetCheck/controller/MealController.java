@@ -45,6 +45,7 @@ public class MealController {
         return ResponseEntity.ok("Meal confirmed successfully");
     }
 
+    // 일별 식단 조회
     @GetMapping("/api/meals/{date}")
     public ResponseEntity<DailyMealResponse> getDailyMeals(@PathVariable String date
     ) {
