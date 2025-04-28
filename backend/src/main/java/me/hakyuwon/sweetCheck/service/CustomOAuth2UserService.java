@@ -22,12 +22,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         // 구글 사용자 정보 파싱
         Map<String, Object> attributes = oAuth2User.getAttributes();
+        String id = (String) attributes.get("id");
         String email = (String) attributes.get("email");
         String name = (String) attributes.get("name");
         String picture = (String) attributes.get("picture");
 
         // Firestore에 저장
-        userService.saveOrUpdateUser(email, name, picture);
+        userService.saveOrUpdateUser(id, email, name, picture);
         return oAuth2User;
     }
 }
