@@ -2,22 +2,24 @@ package me.hakyuwon.sweetCheck.controller;
 
 import com.google.firebase.auth.FirebaseAuthException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import me.hakyuwon.sweetCheck.dto.LoginResponse;
 import me.hakyuwon.sweetCheck.dto.TokenRequest;
 import me.hakyuwon.sweetCheck.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@AllArgsConstructor
+@Controller
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/api/home")
+    @GetMapping("/")
     public String home() {
-        return "home";
+        return "firebase-login";
     }
 
     @PostMapping("/api/users/login")

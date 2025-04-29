@@ -20,7 +20,7 @@ public class FirebaseConfig {
     public FirebaseApp firebaseApp() throws IOException {
         log.info("Initializing Firebase.");
         FileInputStream serviceAccount =
-                new FileInputStream("backend/src/main/resources/sweet-check-firebase-adminsdk-fbsvc-c98e76606d.json");
+                new FileInputStream("src/main/resources/sweet-check-firebase-adminsdk-fbsvc-c98e76606d.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))

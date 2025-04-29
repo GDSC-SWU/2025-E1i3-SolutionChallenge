@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Google Login Test</title>
+    <!-- ✅ compat 버전으로 변경 -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+<h1>Google Login Test</h1>
+<button onclick="signIn()">Sign In with Google</button>
+<pre id="output"></pre>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDsRGnfvZY543nUlDNfm-mJAoL-kHGOkLw",
+        authDomain: "sweet-check.firebaseapp.com",
+        projectId: "sweet-check"
+    };
+
+    // ✅ initializeApp 호출 수정
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    async function signIn() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try {
+            const result = await auth.signInWithPopup(provider);
+            const user = result.user;
+            const idToken = await user.getIdToken();
+            document.getElementById('output').textContent = idToken;
+            console.log("ID Token:", idToken);
+        } catch (error) {
+            console.error("Login error:", error);
+            alert("로그인 실패: " + error.message);
+        }
+    }
+</script>
+</body>
+</html>

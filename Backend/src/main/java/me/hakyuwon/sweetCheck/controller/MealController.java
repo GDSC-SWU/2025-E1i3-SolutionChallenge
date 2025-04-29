@@ -1,11 +1,9 @@
 package me.hakyuwon.sweetCheck.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import lombok.RequiredArgsConstructor;
 import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
 import me.hakyuwon.sweetCheck.dto.MealRequest;
-import me.hakyuwon.sweetCheck.dto.MealResponse;
 import me.hakyuwon.sweetCheck.enums.MealType;
 import me.hakyuwon.sweetCheck.service.MealService;
 import me.hakyuwon.sweetCheck.util.SecurityUtil;
@@ -13,11 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MealController {
     private final MealService mealService;
 

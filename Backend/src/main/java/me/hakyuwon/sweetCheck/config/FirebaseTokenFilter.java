@@ -36,7 +36,7 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        if (path.equals("/") || path.equals("/login") || path.startsWith("/oauth2")) {
+        if (path.equals("/") || path.equals("/login") || path.equals("/api/users/login") || path.startsWith("/oauth2")) {
             filterChain.doFilter(request, response);
             return;
         }
