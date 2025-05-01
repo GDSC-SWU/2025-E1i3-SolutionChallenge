@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.hakyuwon.sweetCheck.domain.Meal;
 import me.hakyuwon.sweetCheck.domain.MealItem;
 import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
+import me.hakyuwon.sweetCheck.dto.SugarResponse;
 import me.hakyuwon.sweetCheck.dto.MealRequest;
 import me.hakyuwon.sweetCheck.enums.MealStatus;
 import me.hakyuwon.sweetCheck.enums.MealType;
@@ -145,8 +146,46 @@ public class MealService {
         } catch (Exception e) {
             log.error("Error retrieving daily meals for userId: {}, date: {}", userId, date, e);
         }
-
         return response;
+    }
+
+    // 오늘 당류 분석
+    public List<SugarResponse> getDailySugar(String userId, LocalDate date) {
+        List<SugarResponse> responses = new ArrayList<>();
+
+        try {
+            LocalDateTime startOfDay = date.atStartOfDay();
+            LocalDateTime endOfDay = date.atTime(23, 59, 59);
+
+            Instant startInstant = startOfDay.atZone(ZoneId.systemDefault()).toInstant();
+            Instant endInstant = endOfDay.atZone(ZoneId.systemDefault()).toInstant();
+
+            Query query = firestore.collection("users")
+                    .document(userId)
+                    .collection("meals")
+                    .whereGreaterThanOrEqualTo("mealDateTime", startInstant)
+                    .whereLessThanOrEqualTo("mealDateTime", endInstant);
+
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
+
+            for (QueryDocumentSnapshot document : documents) {
+                Meal meal = document.toObject(Meal.class);
+
+                SugarResponse response = new SugarResponse(
+                        meal.getMealDateTime(),
+                        meal.getMealType(),
+                        meal.getTotalSugar()
+                );
+
+                responses.add(response);
+            }
+
+        } catch (Exception e) {
+            log.error("Failed to get daily sugar data for userId: {}, date: {}", userId, date, e);
+        }
+
+        return responses;
     }
 }
 
