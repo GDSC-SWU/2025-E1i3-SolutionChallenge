@@ -47,7 +47,8 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
             setUnauthorizedResponse(response, "INVALID_HEADER");
             return;
         }
-        String token = header.substring(7);
+        String token = header.substring(7).trim();
+        log.info("Token: {}", token);
 
         // verify IdToken
         try{
