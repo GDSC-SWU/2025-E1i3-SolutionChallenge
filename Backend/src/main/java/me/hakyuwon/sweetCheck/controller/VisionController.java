@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class VisionController {
     private final RecommendService recommendService;
+    private final VisionService visionService;
 
+    // 메뉴 사진 찍으면 메뉴 리스트 반환
     @PostMapping("/api/photo/menu")
     public ResponseEntity<RecommendResponse> recommendMenu(
             @RequestParam("userId") String userId,
@@ -23,4 +25,6 @@ public class VisionController {
         RecommendResponse response = recommendService.recommendMenu(userId, image);
         return ResponseEntity.ok(response);
     }
+
+
 }
