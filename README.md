@@ -1,8 +1,8 @@
-# 2025-E1i3-SolutionChallenge
+# 2025-SweetCheck-SolutionChallenge
 
 
 # Team Members
-
+Team Name: E1i4
 |                | Chaeyeon Kim                               | Kyuwon Ha          | Sohyun Park        | Jieun Lee          |
 |----------------|---------------------------------------------|---------------------|---------------------|---------------------|
 | **Role**       | PM / AI/ML Developer                        | Backend Developer   | Frontend Developer  | UI/UX Designer      |
