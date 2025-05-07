@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseToken;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.hakyuwon.sweetCheck.dto.LoginResponse;
+import me.hakyuwon.sweetCheck.dto.ProfileRequest;
 import me.hakyuwon.sweetCheck.dto.TokenRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class UserService {
     @Autowired
     private final Firestore firestore;
 
+    // 처음 구글 로그인 시 구글 정보 저장
     public String saveOrUpdateUser(String uid, String email, String name, String picture) {
         try {
             DocumentReference docRef = firestore.collection("users").document(uid);
@@ -46,6 +48,27 @@ public class UserService {
             throw new RuntimeException("Failed to save or update user");
         }
     }
+
+    // 사용자 프로필 입력 정보 따로 저장
+    public void saveUserProfile(ProfileRequest profileRequest) {
+        try {
+            DocumentReference docRef = firestore.collection("user_profiles").document(profileRequest.getUid());
+
+            Map<String, Object> userProfileData = new HashMap<>();
+            userProfileData.put("gender", profileRequest.getGender());
+            userProfileData.put("height", profileRequest.getHeight());
+            userProfileData.put("weight", profileRequest.getWeight());
+            userProfileData.put("age", profileRequest.getAge());
+
+            // 'user_profiles' 컬렉션에 추가 정보 저장
+            docRef.set(userProfileData, SetOptions.merge()).get();
+            log.info("User profile saved or updated.");
+        } catch (Exception e) {
+            log.error("Error saving user profile", e);
+            throw new RuntimeException("Failed to save or update user profile");
+        }
+    }
+
     public LoginResponse login(TokenRequest tokenRequest) {
         try {
             String idToken = tokenRequest.getToken();

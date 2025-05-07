@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
 import me.hakyuwon.sweetCheck.dto.LoginResponse;
+import me.hakyuwon.sweetCheck.dto.ProfileRequest;
 import me.hakyuwon.sweetCheck.dto.TokenRequest;
 import me.hakyuwon.sweetCheck.service.MealService;
 import me.hakyuwon.sweetCheck.service.UserService;
@@ -43,6 +44,12 @@ public class UserController {
     public ResponseEntity<LoginResponse> login(@RequestBody TokenRequest tokenRequest) {
         LoginResponse response = userService.login(tokenRequest);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/api/users/profile")
+    public ResponseEntity<String> updateProfile(@RequestBody ProfileRequest profileRequest) {
+        userService.saveUserProfile(profileRequest);
+        return ResponseEntity.ok("Profile registered successfully");
     }
 
     @DeleteMapping("/api/users/{uid}")

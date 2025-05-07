@@ -17,9 +17,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -150,8 +148,9 @@ public class MealService {
     }
 
     // 오늘 당류 분석
-    public List<SugarResponse> getDailySugar(String userId, LocalDate date) {
+    public Map<String, Object> getDailySugar(String userId, LocalDate date) {
         List<SugarResponse> responses = new ArrayList<>();
+        String message = "Good sugar management today. Keep it up!";
 
         try {
             LocalDateTime startOfDay = date.atStartOfDay();
@@ -172,20 +171,33 @@ public class MealService {
             for (QueryDocumentSnapshot document : documents) {
                 Meal meal = document.toObject(Meal.class);
 
+                double sugar = meal.getTotalSugar();
+                MealType mealType = meal.getMealType();
+
                 SugarResponse response = new SugarResponse(
                         meal.getMealDateTime(),
-                        meal.getMealType(),
-                        meal.getTotalSugar()
+                        mealType,
+                        sugar
                 );
-
                 responses.add(response);
+
+                // 메시지 결정
+                if (sugar >= 25) {
+                    message = "Lot of sugar intake at " + mealType + ". Eating more than the right standard.";
+                    // 하나라도 25g 넘으면 메시지 갱신하고 break
+                    break;
+                }
             }
 
         } catch (Exception e) {
             log.error("Failed to get daily sugar data for userId: {}, date: {}", userId, date, e);
         }
 
-        return responses;
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", responses);
+        result.put("message", message);
+
+        return result;
     }
 }
 
