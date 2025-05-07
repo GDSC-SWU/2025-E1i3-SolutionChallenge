@@ -4,7 +4,6 @@ package me.hakyuwon.sweetCheck.controller;
 import lombok.RequiredArgsConstructor;
 import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
 import me.hakyuwon.sweetCheck.dto.MealRequest;
-import me.hakyuwon.sweetCheck.dto.SugarResponse;
 import me.hakyuwon.sweetCheck.enums.MealType;
 import me.hakyuwon.sweetCheck.service.MealService;
 import me.hakyuwon.sweetCheck.util.SecurityUtil;
@@ -13,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -56,17 +55,14 @@ public class MealController {
 
     // 오늘 당류 분석
     @GetMapping("/api/meals/result")
-    public ResponseEntity<List<SugarResponse>> getDailySugar(@RequestParam String userId, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public ResponseEntity<Map<String, Object>> getDailySugar(@RequestParam String userId, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         {
-            // 기본값 오늘
             if (date == null) {
                 date = LocalDate.now();
             }
-
-            List<SugarResponse> sugarResponses = mealService.getDailySugar(userId, date);
-            return ResponseEntity.ok(sugarResponses);
+            Map<String, Object> result = mealService.getDailySugar(userId, date);
+            return ResponseEntity.ok(result);
         }
     }
-
 }
 
