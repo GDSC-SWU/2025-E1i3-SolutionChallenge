@@ -1,11 +1,13 @@
 package me.hakyuwon.sweetCheck.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 import me.hakyuwon.sweetCheck.domain.MealItem;
 
 import java.util.List;
 
 @Getter
+@Setter
 public class MealRequest {
     private String userId;
     private String imageUrl;
