@@ -19,10 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,9 +38,9 @@ public class MealController {
             @RequestParam("userId") String userId
     ) {
         if (mealDate == null) {
-            LocalDate today = LocalDate.now();
-            mealDate = today;
+            mealDate = LocalDate.now();
         }
+
         try {
             Map<String, MultipartFile> images = Map.of(
                     "morning", morning,
@@ -52,7 +49,6 @@ public class MealController {
                     "snack", snack
             );
 
-            // 파일 이름 포함된 Resource 생성
             Map<String, Resource> resources = new HashMap<>();
             for (Map.Entry<String, MultipartFile> entry : images.entrySet()) {
                 String filename = entry.getKey() + ".jpg";
@@ -67,51 +63,60 @@ public class MealController {
 
             // FastAPI 분석 호출
             Map<String, Object> analysisResult = analyzeService.analyzeDay(resources).block();
-            Map<String, Object> mealsMap = (Map<String, Object>) analysisResult.get("meals");
 
-            // 식사별로 임시 저장
-            for (String mealTypeKey : mealsMap.keySet()) {
+            // meals 추출
+            Map<String, Object> meals = (Map<String, Object>) analysisResult.get("meals");
+            for (Map.Entry<String, Object> entry : meals.entrySet()) {
+                String mealKey = entry.getKey();
+                Object mealDataObj = entry.getValue();
+                if (!(mealDataObj instanceof Map)) continue;
+
                 try {
-                    MealType mealType = MealType.valueOf(mealTypeKey.toUpperCase());
-                    Map<String, Object> mealData = (Map<String, Object>) mealsMap.get(mealTypeKey);
+                    Optional<MealType> optionalMealType = MealType.fromKey(mealKey);
+                    if (optionalMealType.isEmpty()) {
+                        log.warn("알 수 없는 식사 유형 key: {}", mealKey);
+                        continue; // skip this meal
+                    }
+                    MealType mealType = optionalMealType.get(); // 매핑 메서드 필요
 
+                    Map<String, Object> mealData = (Map<String, Object>) mealDataObj;
                     MealRequest mealRequest = new MealRequest();
                     mealRequest.setUserId(userId);
-                    mealRequest.setMealDateTime(mealDate.atTime(8, 0).toString()); // default 시간
+                    mealRequest.setMealDateTime(mealDate.atTime(8, 0).toString());
                     mealRequest.setMealType(mealType.name());
-                    mealRequest.setImageUrl("https://dummy.url/" + mealTypeKey); // TODO: 실제 이미지 저장 URL로 변경
-                    mealRequest.setTotalSugar(((Number) mealData.get("total_sugar")).doubleValue());
+                    mealRequest.setImageUrl("https://dummy.url/" + mealKey); // TODO: 이미지 저장 후 URL 적용
+                    mealRequest.setTotalSugar((Double) mealData.get("total_sugar"));
 
-                    // 음식 정보
                     List<MealItem> items = new ArrayList<>();
                     Map<String, Object> foodSugarData = (Map<String, Object>) mealData.get("food_sugar_data");
-                    for (Map.Entry<String, Object> entry : foodSugarData.entrySet()) {
+                    for (Map.Entry<String, Object> foodEntry : foodSugarData.entrySet()) {
                         MealItem item = new MealItem();
-                        item.setName(entry.getKey());
-
-                        Object sugarValue = entry.getValue();
-                        if (sugarValue instanceof Number) {
-                            item.setSugarPer100(((Number) sugarValue).doubleValue());
+                        item.setName(foodEntry.getKey());
+                        Object sugar = foodEntry.getValue();
+                        if (sugar instanceof Number) {
+                            item.setSugarPer100(((Number) sugar).doubleValue());
                         } else {
-                            item.setSugarPer100(0.0); // 추정값이 문자열인 경우
+                            item.setSugarPer100(0.0); // 또는 로깅만 하고 continue
                         }
                         items.add(item);
                     }
                     mealRequest.setItems(items);
+
                     mealService.saveMealDraft(mealRequest, mealType);
 
                 } catch (IllegalArgumentException e) {
-                    log.warn("알 수 없는 식사 유형 key: {}", mealTypeKey);
-                    continue;
+                    log.warn("알 수 없는 식사 유형 key: {}", mealKey);
                 }
             }
-            return ResponseEntity.ok("분석 및 임시 저장 완료");
+
+            return ResponseEntity.ok(analysisResult);
+
         } catch (Exception e) {
             log.error("식사 분석 실패", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("분석 실패: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("분석 실패: " + e.getMessage());
         }
     }
+
 
     // 오늘 식단 내용 수정
     @PutMapping("/api/meals/{mealId}")
