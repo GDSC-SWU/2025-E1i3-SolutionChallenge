@@ -1,6 +1,7 @@
 package me.hakyuwon.sweetCheck.service;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -12,11 +13,15 @@ import me.hakyuwon.sweetCheck.dto.LoginResponse;
 import me.hakyuwon.sweetCheck.dto.ProfileRequest;
 import me.hakyuwon.sweetCheck.dto.TokenRequest;
 import me.hakyuwon.sweetCheck.dto.WeeklyReportResponse;
+import me.hakyuwon.sweetCheck.enums.ErrorCode;
 import me.hakyuwon.sweetCheck.enums.Gender;
+import me.hakyuwon.sweetCheck.exception.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 
 @Slf4j
@@ -95,15 +100,19 @@ public class UserService {
         FirebaseAuth.getInstance().deleteUser(uid);
     }
 
+    private double roundToTwoDecimals(double value) {
+        return Math.round(value * 100.0) / 100.0;
+    }
+
     public WeeklyReportResponse getWeeklySugarStats(String userId) {
         try {
             // Firestore에서 사용자 정보 가져오기
-            DocumentReference userRef = firestore.collection("users").document(userId);
+            DocumentReference userRef = firestore.collection("user_profiles").document(userId.trim());
             DocumentSnapshot userSnapshot = userRef.get().get();
 
             if (!userSnapshot.exists()) {
                 log.warn("User not found: {}", userId);
-                return null;
+                throw new CustomException(ErrorCode.USER_NOT_FOUND);
             }
 
             // User 객체로 변환 (필요한 필드만 추출)
@@ -112,19 +121,21 @@ public class UserService {
 
             if (genderStr == null || age == null) {
                 log.warn("User data incomplete: {}", userId);
-                return null;
+                throw new CustomException(ErrorCode.INVALID_PARAMETER);
             }
-            Gender gender = Gender.valueOf(genderStr); // enum으로 변환
 
-            double thisWeekAvg = getWeeklyAverage(userId, LocalDate.now().minusDays(6), LocalDate.now());
-            double lastWeekAvg = getWeeklyAverage(userId, LocalDate.now().minusDays(13), LocalDate.now().minusDays(7));
-            double peopleAvg = getPeopleAverage(gender, age.intValue());
+            Gender gender = Gender.valueOf(genderStr.toUpperCase()); // 혹시 "female"처럼 소문자일 수도 있으니 upper 처리
+            double thisWeekAvg = roundToTwoDecimals(getWeeklyAverage(userId, LocalDate.now().minusDays(6), LocalDate.now()));
+            double lastWeekAvg = roundToTwoDecimals(getWeeklyAverage(userId, LocalDate.now().minusDays(13), LocalDate.now().minusDays(7)));
+            double peopleAvg = roundToTwoDecimals(getPeopleAverage(gender, age.intValue()));
 
             return new WeeklyReportResponse(peopleAvg, lastWeekAvg, thisWeekAvg);
 
-        } catch (Exception e) {
+        }catch (CustomException e) {
+            throw e;
+        }catch (Exception e) {
             log.error("Error retrieving weekly sugar stats for user: {}", userId, e);
-            return null;
+            throw new CustomException(ErrorCode.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -135,28 +146,33 @@ public class UserService {
         return dailySugars.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
     }
 
-
     // 일주일 당 섭취량 파이어베이스에서 가져오는 로직
     public List<Double> getSugarValuesBetween(String userId, LocalDate start, LocalDate end) {
         List<Double> sugarList = new ArrayList<>();
 
-        for (LocalDate date = start; !date.isAfter(end); date = date.plusDays(1)) {
-            String dateStr = date.toString();
-            DocumentReference docRef = firestore.collection("users").document(userId)
-                    .collection("meals")
-                    .document(dateStr);
+        // Firestore Timestamp 범위 설정
+        LocalDateTime startDateTime = start.atStartOfDay(); // 00:00
+        LocalDateTime endDateTime = end.plusDays(1).atStartOfDay(); // 다음날 00:00
 
-            try {
-                ApiFuture<DocumentSnapshot> future = docRef.get();
-                DocumentSnapshot document = future.get();
-                if (document.exists()) {
-                    Double sugar = document.getDouble("total_sugar");
-                    if (sugar != null) sugarList.add(sugar);
-                }
-            } catch (Exception e) {
-                log.warn("Failed to get meal for date {}: {}", dateStr, e.getMessage());
+        Timestamp startTimestamp = Timestamp.ofTimeSecondsAndNanos(startDateTime.toEpochSecond(ZoneOffset.UTC), 0);
+        Timestamp endTimestamp = Timestamp.ofTimeSecondsAndNanos(endDateTime.toEpochSecond(ZoneOffset.UTC), 0);
+
+        CollectionReference mealsRef = firestore.collection("users").document(userId).collection("meals");
+
+        try {
+            ApiFuture<QuerySnapshot> query = mealsRef
+                    .whereGreaterThanOrEqualTo("mealDateTime", startTimestamp)
+                    .whereLessThan("mealDateTime", endTimestamp)
+                    .get();
+
+            for (DocumentSnapshot doc : query.get().getDocuments()) {
+                Double sugar = doc.getDouble("totalSugar");
+                if (sugar != null) sugarList.add(sugar);
             }
+        } catch (Exception e) {
+            log.error("Error querying meals between {} and {}: {}", start, end, e.getMessage());
         }
+
         return sugarList;
     }
 
