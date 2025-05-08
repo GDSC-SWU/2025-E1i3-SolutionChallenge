@@ -11,7 +11,7 @@ import java.util.Collections;
 @Service
 public class FirebaseUserDetailsService implements UserDetailsService {
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new User(username, "", Collections.emptyList());
+    public UserDetails loadUserByUsername(String uid) throws UsernameNotFoundException {
+        return new User(uid, "", Collections.emptyList());
     }
 }

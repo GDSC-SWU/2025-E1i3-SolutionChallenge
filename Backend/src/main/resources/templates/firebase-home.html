@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Google Login Test</title>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+<h1>Google Login Test</h1>
+<button onclick="signIn()">Sign In with Google</button>
+<button onclick="copyToken()">Copy Token</button>
+<pre id="output" style="white-space: pre-wrap;"></pre>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDsRGnfvZY543nUlDNfm-mJAoL-kHGOkLw",
+        authDomain: "sweet-check.firebaseapp.com",
+        projectId: "sweet-check"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    async function signIn() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try {
+            const result = await auth.signInWithPopup(provider);
+            const user = result.user;
+            const idToken = await user.getIdToken();
+            document.getElementById('output').textContent = idToken;
+            console.log("ID Token:", idToken);
+        } catch (error) {
+            console.error("Login error:", error);
+            alert("로그인 실패: " + error.message);
+        }
+    }
+
+    function copyToken() {
+        const token = document.getElementById('output').textContent;
+        if (!token) {
+            alert("먼저 로그인하여 토큰을 받아주세요.");
+            return;
+        }
+        navigator.clipboard.writeText(token)
+            .then(() => {
+                alert("토큰이 복사되었습니다!");
+            })
+            .catch(err => {
+                alert("복사 실패: " + err);
+            });
+    }
+</script>
+</body>
+</html>
