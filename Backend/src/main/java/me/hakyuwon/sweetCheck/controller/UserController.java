@@ -3,12 +3,10 @@ package me.hakyuwon.sweetCheck.controller;
 import com.google.firebase.auth.FirebaseAuthException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import me.hakyuwon.sweetCheck.dto.DailyMealResponse;
-import me.hakyuwon.sweetCheck.dto.LoginResponse;
-import me.hakyuwon.sweetCheck.dto.ProfileRequest;
-import me.hakyuwon.sweetCheck.dto.TokenRequest;
+import me.hakyuwon.sweetCheck.dto.*;
 import me.hakyuwon.sweetCheck.service.MealService;
 import me.hakyuwon.sweetCheck.service.UserService;
+import me.hakyuwon.sweetCheck.util.SecurityUtil;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +25,8 @@ public class UserController {
     private final MealService mealService;
 
     @GetMapping("/")
-    public void init () {
+    public String init () {
+        return "firebase-home.html";
     }
 
     @ResponseBody
@@ -59,5 +58,13 @@ public class UserController {
         } catch (FirebaseAuthException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    // 주간 통계 API
+    @GetMapping("/api/meals/stats")
+    public ResponseEntity<WeeklyReportResponse> getWeeklyStats() {
+        String userId = SecurityUtil.getCurrentUserId();
+        WeeklyReportResponse response = userService.getWeeklySugarStats(userId);
+        return ResponseEntity.ok(response);
     }
 }
