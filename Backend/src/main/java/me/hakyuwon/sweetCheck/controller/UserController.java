@@ -27,8 +27,7 @@ public class UserController {
     private final MealService mealService;
 
     @GetMapping("/")
-    public String init () {
-        return "firebase-login";
+    public void init () {
     }
 
     @ResponseBody
