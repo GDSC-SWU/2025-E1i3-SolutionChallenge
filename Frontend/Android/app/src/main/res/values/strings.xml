@@ -68,5 +68,16 @@
     <string name="_2025_07_06">2025.07.06</string>
     <string name="calender">📅</string>
     <string name="gallery">🖼</string>
+    <string name="view_more">View more</string>
+    <string name="a_lot_of_sugar_intake_at_lunch_neating_more_than_the_right_standard">A lot of sugar intake at Lunch.\nEating more than the right standard.</string>
+    <string name="you_can_lower_the_level_nof_stress_management_and_activities">You can lower the level\nof stress management and activities!</string>
+    <string name="i_ate_at_this_time">I ate at this time.</string>
+    <string name="aren_t_you_stressed_out_when_you_eat_a_lot">Aren\'t you stressed out when you eat a lot?</string>
+    <string name="report">Report</string>
+    <string name="average_daily_intake_of_45g">Average daily intake of 45g</string>
+    <string name="the_highest_intake_of_sugar_for_dinner">The highest intake of sugar for Dinner</string>
+    <string name="exceeded_the_per_capita_figure_on_average">Exceeded the per-capita figure on average</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

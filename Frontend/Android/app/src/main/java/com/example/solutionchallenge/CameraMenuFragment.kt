@@ -30,9 +30,18 @@ class CameraMenuFragment : Fragment() {
         }
 
         cardMenu.setOnClickListener {
-            val dialog = MenuSelectDialogFragment()
-            dialog.show(parentFragmentManager, "menu_select")
+            val cameraFragment = CameraFragment().apply {
+                arguments = Bundle().apply {
+                    putString("cameraPurpose", "menu")
+                }
+            }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, cameraFragment)
+                .addToBackStack(null)
+                .commit()
         }
+
+
 
     }
 

@@ -26,4 +26,5 @@
         android:layout_height="wrap_content"
         android:text="@string/take_a_photo"
         android:layout_marginTop="12dp"/>
+
 </LinearLayout>

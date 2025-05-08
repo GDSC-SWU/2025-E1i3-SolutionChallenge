@@ -1,5 +1,6 @@
 package com.example.solutionchallenge
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -78,6 +79,7 @@ class HomeFragment : Fragment() {
         // 2️⃣ 카드 클릭 이벤트 (프래그먼트 전환)
         val photoCard = view.findViewById<CardView>(R.id.photoCard)
         val menuCard = view.findViewById<CardView>(R.id.menuCard)
+        val viewMoreButton=view.findViewById<CardView>(R.id.viewMoreCard)
 
         photoCard.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
@@ -91,6 +93,14 @@ class HomeFragment : Fragment() {
                 .replace(R.id.fragmentContainer, MenuSelectDialogFragment())
                 .addToBackStack(null)
                 .commit()
+
+
         }
+
+        viewMoreButton.setOnClickListener {
+            val intent = Intent(requireContext(), StatisticsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

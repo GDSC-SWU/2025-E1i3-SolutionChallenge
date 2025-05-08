@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -55,5 +57,10 @@ dependencies {
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0") //막대 차트 플러그인
     implementation("com.kizitonwose.calendar:view:2.4.0")//달력플러그인
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")//서버
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
 
 }

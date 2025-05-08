@@ -44,8 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/next"
-            android:enabled="false"
-            android:background="@color/brawn_600"
+            android:background="@color/orange_600"
             android:layout_marginTop="300dp"
             android:textColor="@android:color/white" />
 

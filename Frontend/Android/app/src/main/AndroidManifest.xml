@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- 카메라 권한 사용 -->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
@@ -27,6 +27,15 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <!-- MainActivity: 하단 네비게이션 및 프래그먼트 관리 -->
         <activity android:name=".MainActivity" android:exported="true" />
@@ -39,6 +48,9 @@
 
         <!-- UserInfoInputActivity: 신체 정보 입력 화면 -->
         <activity android:name=".UserInfoInputActivity" android:exported="true" />
+
+        <!-- StatisticsActivity: 통계 화면 -->
+        <activity android:name=".StatisticsActivity" android:exported="true" />
 
     </application>
 

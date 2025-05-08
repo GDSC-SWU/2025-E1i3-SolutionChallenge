@@ -111,6 +111,25 @@
                     android:gravity="left"
                     android:text="@string/breakfast"
                     android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="Less"
+                    android:textColor="@color/orange_300"
+                    android:textSize="15sp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="당류 약 18g\n Clam Pasta\n Pickle\n Baguett"
+                    android:textSize="15sp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginLeft="10dp"/>
+
             </androidx.cardview.widget.CardView>
 
             <!-- 점심 카드 -->
@@ -126,6 +145,23 @@
                     android:gravity="left"
                     android:text="@string/lunch"
                     android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="proper"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="당류 약 18g\n Clam Pasta\n Pickle\n Baguett"
+                    android:textSize="15sp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginLeft="10dp"/>
             </androidx.cardview.widget.CardView>
 
             <!-- 저녁 카드 -->
@@ -141,6 +177,23 @@
                     android:gravity="left"
                     android:text="@string/dinner"
                     android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="Excess"
+                    android:textColor="@color/orange_600"
+                    android:textSize="15sp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="당류 약 23g\n Clam Pasta\n Pickle\n Baguett\n 3 others"
+                    android:textSize="15sp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginLeft="10dp"/>
             </androidx.cardview.widget.CardView>
 
             <!-- 간식 카드 -->
@@ -151,26 +204,20 @@
                 android:layout_margin="8dp"
                 app:layout_columnWeight="1"
                 app:cardCornerRadius="20dp">
-
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/snack"
-                        android:textSize="18sp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/record"
-                        android:gravity="center"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                    android:gravity="left"
+                    android:text="@string/snack"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/record"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
-                </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.gridlayout.widget.GridLayout>
 
