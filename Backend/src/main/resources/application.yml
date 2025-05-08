@@ -17,3 +17,6 @@ spring:
   data:
     firestore:
       enabled: true
+ai:
+  api:
+    url: https://sweetcheck-backend-869251702908.us-central1.run.app/analyze-day

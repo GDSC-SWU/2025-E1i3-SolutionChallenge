@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.hakyuwon.sweetCheck.enums.Gender;
 
 import java.util.Date;
 
@@ -17,4 +18,8 @@ public class User {
     private String email;
     private Date createdAt;
     private String imageUrl;
+    private Gender gender;
+    private Integer height;
+    private Integer weight;
+    private Integer age;
 }
