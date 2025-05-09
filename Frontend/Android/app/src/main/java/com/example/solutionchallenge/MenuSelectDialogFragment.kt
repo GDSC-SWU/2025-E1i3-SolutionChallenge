@@ -80,11 +80,12 @@ class MenuSelectDialogFragment : BottomSheetDialogFragment() {
         btnCamera.setOnClickListener {
             dismiss()
             val permission = Manifest.permission.CAMERA
-            if (ContextCompat.checkSelfPermission(requireContext(), permission) == PackageManager.PERMISSION_GRANTED) {
-                val purpose = arguments?.getString("cameraPurpose") ?: "record"
+            if (ContextCompat.checkSelfPermission(requireContext(), permission)
+                == PackageManager.PERMISSION_GRANTED
+            ) {
                 val cameraFragment = CameraFragment().apply {
                     arguments = Bundle().apply {
-                        putString("cameraPurpose", purpose)
+                        putString("cameraPurpose", "menu") // 목적 전달
                     }
                 }
                 parentFragmentManager.beginTransaction()
@@ -95,5 +96,6 @@ class MenuSelectDialogFragment : BottomSheetDialogFragment() {
                 requestCameraPermissionLauncher.launch(permission)
             }
         }
+
     }
 }
