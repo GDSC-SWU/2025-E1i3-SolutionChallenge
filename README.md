@@ -5,6 +5,7 @@
 # Our Goal
 
 # Tech stack
+<img src='https://github.com/user-attachments/assets/ea76fc05-01b2-42b1-ac5c-430aafe51fa2', width=800>
 
 # Demo video
 
