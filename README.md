@@ -1,4 +1,14 @@
 # 2025-SweetCheck-SolutionChallenge
+# Service Introduction
+
+
+# Our Goal
+
+# Tech stack
+
+# Demo video
+
+# How to Use
 
 
 # Team Members
