@@ -9,13 +9,13 @@ import re
 import google.generativeai as genai
 import os
 
-# --- 설정값 ---
+# --- Setting value ---
 GCS_MODEL_URL = os.getenv("GCS_MODEL_URL", "")
 YOLO_MODEL_PATH = "best.pt"
 USDA_API_KEY = os.getenv("USDA_API_KEY", "")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
-# --- YOLO 모델 다운로드 ---
+# --- YOLO model download ---
 def download_model():
     if not os.path.exists(YOLO_MODEL_PATH):
         if not GCS_MODEL_URL:
@@ -31,7 +31,7 @@ def download_model():
     else:
         print("🔄 YOLO model already exists.")
 
-# --- 모델 초기화 ---
+# --- model reset ---
 try:
     download_model()
     if not os.path.exists(YOLO_MODEL_PATH):
@@ -48,12 +48,12 @@ gemini_model = genai.GenerativeModel("gemini-1.5-flash")
 
 app = FastAPI()
 
-# --- 헬스 체크 ---
+# --- health check ---
 @app.get("/")
 def health_check():
     return {"status": "ok"}
 
-# --- 음식 이름 보정 ---
+# --- food name correction ---
 def refine_food_name_with_gemini(original_name: str) -> str:
     prompt = f"""
     '{original_name}'은/는 이미지 인식 모델이 예측한 음식 이름입니다.
@@ -66,7 +66,7 @@ def refine_food_name_with_gemini(original_name: str) -> str:
     except Exception:
         return original_name
 
-# --- 당류 추정 ---
+# --- sugar estimation ---
 def estimate_sugar_with_gemini(food_name: str) -> (str, float):
     prompt = f"""
 '{food_name}'은/는 일반적으로 어떤 재료로 조리되며, 1인분 또는 100g 기준으로 당류(sugar)가 얼마나 포함되어 있는지 추정해 주세요.
