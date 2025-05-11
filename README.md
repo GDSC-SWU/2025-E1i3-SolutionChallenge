@@ -7,3 +7,4 @@ Team Name: E1i4
 |----------------|---------------------------------------------|---------------------|---------------------|---------------------|
 | **Role**       | PM / AI/ML Developer                        | Backend Developer   | Frontend Developer  | UI/UX Designer      |
 | **Profile**    | <img src="https://github.com/user-attachments/assets/1b405a16-0ac9-4d6a-92e9-a196e61303e5" width="200"/> |                     |                     |                     |
+![KakaoTalk_20250509_190929002](https://github.com/user-attachments/assets/d2777386-47bb-4bab-8a81-faeed6969378)
