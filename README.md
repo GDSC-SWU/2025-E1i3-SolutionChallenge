@@ -1,19 +1,18 @@
-# 2025-SweetCheck-SolutionChallenge
-# Service Introduction
+# 🍰 2025-SweetCheck-SolutionChallenge
+# 🍰 Service Introduction
 
-
-# Our Goal
+# 🥨 Our Goal
 ![스크린샷 2025-05-11 142907](https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9)
 
-# Tech stack
+# 🥯 Tech stack
 <img src="https://github.com/user-attachments/assets/2fe12ffd-49f9-4701-9080-888a0dc57ff2" width="800">
 
-# Demo video
+# 🍦 Demo video
 
-# How to Use
+# 🍭 How to Use
 
 
-# Team Members
+# 🍧 Team Members
 **Team Name: E1i4**
 |                | Chaeyeon Kim                               | Kyuwon Ha          | Sohyun Park        | Jieun Lee          |
 |----------------|---------------------------------------------|---------------------|---------------------|---------------------|
