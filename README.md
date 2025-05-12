@@ -7,10 +7,20 @@ With just a smartphone camera, users can visualize their sugar intake and manage
 
 Affordable, accessible, and built for everyday use — especially for low-income families.
 # 🎯 Our Goal : Innovating Wellness with Simplicity
-![스크린샷 2025-05-11 142907](https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9) 
-
-In line with the **Health Care** goal — *"Innovate for wellness"* —  
-SweetCheck reimagines diabetes management for early-risk individuals through accessible, intelligent tools.
+<table>
+  <tr>
+    <td style="width: 150px;">
+      <img src="https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9" width="140"/>
+    </td>
+    <td style="vertical-align: top; padding-left: 10px;">
+      <p><strong>Health Care</strong> — <em>"Innovate for wellness"</em></p>
+      <p>
+        SweetCheck reimagines diabetes management for early-risk individuals  
+        through accessible, intelligent tools.
+      </p>
+    </td>
+  </tr>
+</table>
 
 Our vision:
 
