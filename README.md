@@ -6,8 +6,21 @@ With just a smartphone camera, users can visualize their sugar intake and manage
 **no devices, no hassle, just awareness.**
 
 Affordable, accessible, and built for everyday use — especially for low-income families.
-# 🥨 Our Goal
-![스크린샷 2025-05-11 142907](https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9)
+# 🥨 Our Goal : Innovating Wellness with Simplicity
+![스크린샷 2025-05-11 142907](https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9) 
+
+In line with the **Health Care** goal — *"Innovate for wellness"* —  
+SweetCheck reimagines diabetes management for early-risk individuals through accessible, intelligent tools.
+
+Our vision:
+
+- 🤖 **AI-powered scanning & auto-recording** for effortless meal tracking  
+- 📱 **Smartphone-only access** to reduce cost and increase usability  
+- 🍬 **Sugar cube visuals & intuitive graphs** that simplify data understanding  
+- 📈 **Rhythm analysis** to uncover and monitor sugar consumption patterns  
+- 🧭 **Personalized feedback & missions** to support long-term behavior change  
+
+By lowering entry barriers and raising awareness, SweetCheck empowers users to take early action and build healthier habits.
 
 # 🥯 Tech stack
 <img src="https://github.com/user-attachments/assets/2fe12ffd-49f9-4701-9080-888a0dc57ff2" width="800">
