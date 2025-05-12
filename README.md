@@ -6,7 +6,7 @@
 ![스크린샷 2025-05-11 142907](https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9)
 
 # Tech stack
-<img src="https://github.com/user-attachments/assets/8be16724-6d46-427d-be0a-6a94b6712ed5" width="800">
+<img src="https://github.com/user-attachments/assets/2fe12ffd-49f9-4701-9080-888a0dc57ff2" width="800">
 
 # Demo video
 
