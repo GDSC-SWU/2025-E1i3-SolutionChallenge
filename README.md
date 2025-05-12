@@ -6,7 +6,7 @@ With just a smartphone camera, users can visualize their sugar intake and manage
 **no devices, no hassle, just awareness.**
 
 Affordable, accessible, and built for everyday use — especially for low-income families.
-# 🥨 Our Goal : Innovating Wellness with Simplicity
+# 🎯 Our Goal : Innovating Wellness with Simplicity
 ![스크린샷 2025-05-11 142907](https://github.com/user-attachments/assets/07140e02-6772-4801-bd95-a1116df76cc9) 
 
 In line with the **Health Care** goal — *"Innovate for wellness"* —  
