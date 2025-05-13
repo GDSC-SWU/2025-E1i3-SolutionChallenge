@@ -30,7 +30,8 @@ Our vision:
 - 📈 **Rhythm analysis** to uncover and monitor sugar consumption patterns  
 - 🧭 **Personalized feedback & missions** to support long-term behavior change  
 
-By lowering entry barriers and raising awareness, SweetCheck empowers users to take early action and build healthier habits.
+By lowering entry barriers and raising awareness, 
+**SweetCheck** empowers users to take early action and build healthier habits.
 
 # 🦾 Tech stack
 <img src="https://github.com/user-attachments/assets/2fe12ffd-49f9-4701-9080-888a0dc57ff2" width="800">
