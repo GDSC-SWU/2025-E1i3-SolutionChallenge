@@ -32,15 +32,15 @@ public class RecommendService {
         DailyMealResponse response = mealService.getDailyMeals(userId, today);
         double todaySugar = response.getDailyTotalSugar();
 
-        // 조건 설정
+        // setting conditions
         String condition = todaySugar < LOW_SUGAR_STANDARD
                 ? "오늘 섭취한 당이 적으니 당이 조금 높은 음료를 추천해줘."
                 : "오늘 섭취한 당이 많으니 당이 적은 음료를 추천해줘.";
 
-        // Gemini에 프롬프트 작성
+        // write prompts to Gemini
         String prompt = makePrompt(menus, condition);
 
-        // Gemini에게 요청 보내서 추천 결과 받기
+        // get recommendation of Gemini
         String recommendedMenu = geminiService.recommendMenu(prompt);
 
         return new RecommendResponse(recommendedMenu);

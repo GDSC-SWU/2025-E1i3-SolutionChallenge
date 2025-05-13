@@ -60,7 +60,7 @@ public class UserController {
         }
     }
 
-    // 주간 통계 API
+    // weekly report api
     @GetMapping("/api/meals/stats")
     public ResponseEntity<WeeklyReportResponse> getWeeklyStats() {
         String userId = SecurityUtil.getCurrentUserId();

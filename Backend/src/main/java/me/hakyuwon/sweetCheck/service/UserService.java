@@ -32,7 +32,7 @@ public class UserService {
     @Autowired
     private final Firestore firestore;
 
-    // 처음 구글 로그인 시 구글 정보 저장
+    // first log in
     public String saveOrUpdateUser(String uid, String email, String name, String picture) {
         try {
             DocumentReference docRef = firestore.collection("users").document(uid);
@@ -57,7 +57,7 @@ public class UserService {
         }
     }
 
-    // 사용자 프로필 입력 정보 따로 저장
+    // save individually for users profile
     public void saveUserProfile(ProfileRequest profileRequest) {
         try {
             DocumentReference docRef = firestore.collection("user_profiles").document(profileRequest.getUid());
@@ -77,7 +77,7 @@ public class UserService {
         }
     }
 
-    // 로그인, 토큰 검증
+    // log in and verify token
     public LoginResponse login(TokenRequest tokenRequest) {
         try {
             String idToken = tokenRequest.getToken();
@@ -95,7 +95,7 @@ public class UserService {
         }
     }
 
-    // 사용자 탈퇴
+    // delete user
     public void deleteUser(String uid) throws FirebaseAuthException {
         FirebaseAuth.getInstance().deleteUser(uid);
     }
@@ -106,7 +106,7 @@ public class UserService {
 
     public WeeklyReportResponse getWeeklySugarStats(String userId) {
         try {
-            // Firestore에서 사용자 정보 가져오기
+            // get user information at Firestore
             DocumentReference userRef = firestore.collection("user_profiles").document(userId.trim());
             DocumentSnapshot userSnapshot = userRef.get().get();
 
@@ -115,7 +115,7 @@ public class UserService {
                 throw new CustomException(ErrorCode.USER_NOT_FOUND);
             }
 
-            // User 객체로 변환 (필요한 필드만 추출)
+            // change in to User object
             String genderStr = userSnapshot.getString("gender");
             Long age = userSnapshot.getLong("age");
 
@@ -124,7 +124,7 @@ public class UserService {
                 throw new CustomException(ErrorCode.INVALID_PARAMETER);
             }
 
-            Gender gender = Gender.valueOf(genderStr.toUpperCase()); // 혹시 "female"처럼 소문자일 수도 있으니 upper 처리
+            Gender gender = Gender.valueOf(genderStr.toUpperCase()); // considering lower case like "female"
             double thisWeekAvg = roundToTwoDecimals(getWeeklyAverage(userId, LocalDate.now().minusDays(6), LocalDate.now()));
             double lastWeekAvg = roundToTwoDecimals(getWeeklyAverage(userId, LocalDate.now().minusDays(13), LocalDate.now().minusDays(7)));
             double peopleAvg = roundToTwoDecimals(getPeopleAverage(gender, age.intValue()));
@@ -139,20 +139,20 @@ public class UserService {
         }
     }
 
-    // 일주일 당 평균
+    // get weekly average sugar
     public double getWeeklyAverage(String userId, LocalDate start, LocalDate end) {
         List<Double> dailySugars = getSugarValuesBetween(userId, start, end); // 일별 total_sugar 합계 가져오기
         if (dailySugars.isEmpty()) return 0.0;
         return dailySugars.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
     }
 
-    // 일주일 당 섭취량 파이어베이스에서 가져오는 로직
+    // get sugar values between week to week
     public List<Double> getSugarValuesBetween(String userId, LocalDate start, LocalDate end) {
         List<Double> sugarList = new ArrayList<>();
 
-        // Firestore Timestamp 범위 설정
+        // set range Firestore Timestamp
         LocalDateTime startDateTime = start.atStartOfDay(); // 00:00
-        LocalDateTime endDateTime = end.plusDays(1).atStartOfDay(); // 다음날 00:00
+        LocalDateTime endDateTime = end.plusDays(1).atStartOfDay(); // next day 00:00
 
         Timestamp startTimestamp = Timestamp.ofTimeSecondsAndNanos(startDateTime.toEpochSecond(ZoneOffset.UTC), 0);
         Timestamp endTimestamp = Timestamp.ofTimeSecondsAndNanos(endDateTime.toEpochSecond(ZoneOffset.UTC), 0);
@@ -176,7 +176,7 @@ public class UserService {
         return sugarList;
     }
 
-    // 연령, 성별 기준 평균 당 섭취량 반환
+    // average from same age, gender
     public double getPeopleAverage (Gender gender,int age) {
         if (gender == Gender.MALE) {
             if (age < 30) return 70.0;

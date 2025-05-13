@@ -11,7 +11,7 @@ import java.util.List;
 public class MealRequest {
     private String userId;
     private String imageUrl;
-    private String mealDateTime; // ISO-8601 문자열
+    private String mealDateTime;
     private String mealType;
     private double totalSugar;
     private List<MealItem> items;

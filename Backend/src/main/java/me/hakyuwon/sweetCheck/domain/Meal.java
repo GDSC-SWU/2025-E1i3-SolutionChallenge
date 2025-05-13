@@ -16,7 +16,7 @@ import java.util.Date;
 public class Meal {
     private String imageUrl;
     private Date mealDateTime;
-    private MealType mealType;       // 식사 종류 (enum: 아침, 점심 등)
+    private MealType mealType; // morning, lunch, dinner, snack
     private double totalSugar;
     private MealStatus status;
 }

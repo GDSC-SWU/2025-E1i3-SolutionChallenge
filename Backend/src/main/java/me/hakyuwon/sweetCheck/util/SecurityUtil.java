@@ -18,7 +18,7 @@ public class SecurityUtil {
 
         Object principal = authentication.getPrincipal();
         if (principal instanceof UserDetails) {
-            return ((UserDetails) principal).getUsername();  // 올바르게 uid 반환
+            return ((UserDetails) principal).getUsername();
         } else if (principal instanceof String) {
             return (String) principal;
         } else {
