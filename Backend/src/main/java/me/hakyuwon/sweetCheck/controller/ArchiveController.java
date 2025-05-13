@@ -19,7 +19,7 @@ import java.time.YearMonth;
 public class ArchiveController {
     private final ArchiveService archiveService;
 
-    // 날짜별 식단 이미지 반환
+    // get daily meal's images
     @GetMapping("/api/meals/images")
     public ResponseEntity<DailyImageResponse> getDailyImageUrls(
             @RequestParam String userId,
@@ -29,7 +29,7 @@ public class ArchiveController {
         return ResponseEntity.ok(response);
     }
 
-    // 달력 볼드 표시용 (기록한 날짜 반환)
+    // get recorded dates (for calendar)
     @GetMapping("/api/meals/summary")
     public ResponseEntity<MonthlyResponse> getMonthlyMealDates(
             @RequestParam String userId,

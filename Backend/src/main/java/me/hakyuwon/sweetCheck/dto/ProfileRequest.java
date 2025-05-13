@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class ProfileRequest {
-    private String uid;  // 구글 UID
+    private String uid;  // google UID
     private String gender;
     private Integer height;
     private Integer weight;

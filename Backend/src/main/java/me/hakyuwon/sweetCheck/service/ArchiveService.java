@@ -17,7 +17,7 @@ import java.util.*;
 public class ArchiveService {
     private final Firestore firestore = FirestoreClient.getFirestore();
 
-    // 일별 이미지 모음 반환
+    // get daily images
     public DailyImageResponse getDailyImageUrls(LocalDate date, String userId) {
         DailyImageResponse response = new DailyImageResponse();
         List<String> imageUrls = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ArchiveService {
         return response;
     }
 
-    // 월별 기록된 날짜 반환
+    // get monthly recorded dates
     public MonthlyResponse getMonthlyMealDates(String userId, YearMonth month) {
         List<String> recordedDates = new ArrayList<>();
 

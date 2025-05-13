@@ -43,7 +43,7 @@ public class MealService {
 
             mealRef.set(meal).get();
 
-            // MealItem 저장
+            // save mealItem
             for (MealItem item : request.getItems()) {
                 mealRef.collection("mealItems").add(item).get();
             }
@@ -57,7 +57,7 @@ public class MealService {
         return null;
     }
 
-    // 식단 내용 수정
+    // update menu
     public void updateMealDraft(String userId, String mealId, MealRequest request) {
         try {
             DocumentReference mealRef = firestore.collection("users")
@@ -65,13 +65,12 @@ public class MealService {
                     .collection("meals")
                     .document(mealId);
 
-            // 기존 meal 덮어쓰기
             mealRef.update(
                     "mealType", MealType.valueOf(request.getMealType()),
                     "totalSugar", request.getTotalSugar()
             ).get();
 
-            // 기존 mealItems 삭제 후 새로 저장
+            // delete existing mealItems and save new ones
             CollectionReference itemsRef = mealRef.collection("mealItems");
             ApiFuture<QuerySnapshot> future = itemsRef.get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
@@ -90,7 +89,7 @@ public class MealService {
         }
     }
 
-    // 식단 내용 확정
+    // confirm meal
     public void confirmMeal(String userId, String mealId) {
         try {
             DocumentReference mealRef = firestore.collection("users")
@@ -107,7 +106,7 @@ public class MealService {
         }
     }
 
-    // 일별 식단 조회
+    // get daily meals
     public DailyMealResponse getDailyMeals(String userId, LocalDate date) {
         DailyMealResponse response = new DailyMealResponse();
         List<Meal> meals = new ArrayList<>();
@@ -147,7 +146,7 @@ public class MealService {
         return response;
     }
 
-    // 오늘 당류 분석
+    // analyze today's sugar
     public Map<String, Object> getDailySugar(String userId, LocalDate date) {
         List<SugarResponse> responses = new ArrayList<>();
         String message = "Good sugar management today. Keep it up!";
@@ -181,10 +180,10 @@ public class MealService {
                 );
                 responses.add(response);
 
-                // 메시지 결정
+                // confirm messages
                 if (sugar >= 25) {
                     message = "Lot of sugar intake at " + mealType + ". Eating more than the right standard.";
-                    // 하나라도 25g 넘으면 메시지 갱신하고 break
+                    // if exceed 25g
                     break;
                 }
             }

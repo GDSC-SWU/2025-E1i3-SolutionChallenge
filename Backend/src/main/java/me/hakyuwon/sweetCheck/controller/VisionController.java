@@ -3,7 +3,6 @@ package me.hakyuwon.sweetCheck.controller;
 import lombok.AllArgsConstructor;
 import me.hakyuwon.sweetCheck.dto.RecommendResponse;
 import me.hakyuwon.sweetCheck.service.RecommendService;
-import me.hakyuwon.sweetCheck.service.VisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,9 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class VisionController {
     private final RecommendService recommendService;
-    private final VisionService visionService;
 
-    // 메뉴 사진 찍으면 메뉴 리스트 반환
+    // take a photo of the menu and get a recommendation
     @PostMapping("/api/photo/menu")
     public ResponseEntity<RecommendResponse> recommendMenu(
             @RequestParam("userId") String userId,

@@ -9,8 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 public class MealResponse {
-    private String mealType;  // 아침, 점심, 저녁, 간식
-    private String imageUrl;  // 이미지 URL
-    private double totalSugar;  // 총 당류
+    private String mealType;
+    private String imageUrl;
+    private double totalSugar;
     private List<MealItem> mealItems;
 }

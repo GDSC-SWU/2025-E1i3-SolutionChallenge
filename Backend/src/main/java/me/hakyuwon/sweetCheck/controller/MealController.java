@@ -28,6 +28,7 @@ public class MealController {
     private final MealService mealService;
     private final AnalyzeService analyzeService;
 
+    /* use fast api to analyze meals (replaced to use at front)
     @PostMapping("/api/analyze-meals")
     public ResponseEntity<?> analyzeMealDay(
             @RequestParam("morning") MultipartFile morning,
@@ -115,10 +116,9 @@ public class MealController {
             log.error("식사 분석 실패", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("분석 실패: " + e.getMessage());
         }
-    }
+    }*/
 
-
-    // 오늘 식단 내용 수정
+    // modify today's menu
     @PutMapping("/api/meals/{mealId}")
     public ResponseEntity<String> updateMealDraft(@PathVariable String mealId,
                                                 @RequestBody MealRequest request) {
@@ -126,7 +126,7 @@ public class MealController {
         return ResponseEntity.ok("Meal updated successfully");
     }
 
-    // 식단 확정
+    // confirm menu
     @PostMapping("/api/meals/{mealId}/confirm")
     public ResponseEntity<String> confirmMeal(@PathVariable String mealId) {
         String userId = SecurityUtil.getCurrentUserId();
@@ -134,7 +134,7 @@ public class MealController {
         return ResponseEntity.ok("Meal confirmed successfully");
     }
 
-    // 일별 식단 조회
+    // get daily meals
     @GetMapping("/api/meals/{date}")
     public ResponseEntity<DailyMealResponse> getDailyMeals(@PathVariable String date
     ) {
@@ -144,7 +144,7 @@ public class MealController {
         return ResponseEntity.ok(response);
     }
 
-    // 오늘 당류 분석
+    // get today's sugar result
     @GetMapping("/api/meals/result")
     public ResponseEntity<Map<String, Object>> getDailySugar(@RequestParam String userId, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         {
@@ -155,7 +155,5 @@ public class MealController {
             return ResponseEntity.ok(result);
         }
     }
-
-
 }
 

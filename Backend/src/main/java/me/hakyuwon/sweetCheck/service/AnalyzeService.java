@@ -31,14 +31,14 @@ public class AnalyzeService {
         images.forEach((key, resource) -> builder.part(key, resource));
 
         return webClient.post()
-                .uri("") //
+                .uri("")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(BodyInserters.fromMultipartData(builder.build()))
                 .retrieve()
                 .onStatus(response -> response.isError(), res ->
                         res.bodyToMono(String.class).flatMap(body -> {
-                            log.error("FastAPI 오류 응답: {}", body);
-                            return Mono.error(new RuntimeException("FastAPI 서버 오류: " + body));
+                            log.error("FastAPI error: {}", body);
+                            return Mono.error(new RuntimeException("FastAPI server error: " + body));
                         })
                 )
                 .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {});

@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class VisionService {
 
-    // 이미지에서 메뉴 추출
+    // get menu from menu image
     public List<String> menuFromImage(MultipartFile imageFile) throws Exception {
         List<String> menuList = new ArrayList<>();
 
@@ -45,7 +45,7 @@ public class VisionService {
                 }
             }
         } catch (Exception e) {
-            throw new RuntimeException("Vision API 호출 실패", e);
+            throw new RuntimeException("Vision API failed", e);
         }
         return menuList;
     }
