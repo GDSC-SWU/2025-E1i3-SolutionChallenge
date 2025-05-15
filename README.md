@@ -1,5 +1,7 @@
 # 🩺 2025-SweetCheck-SolutionChallenge
 ## Service Introduction
+![1 수정](https://github.com/user-attachments/assets/2969691d-b48e-4826-a01b-80aac39f5cff)
+
 Many early-risk diabetics avoid traditional monitoring tools, thinking, *"I'm not sick yet."*  
 **SweetCheck** uses simple photo-based tracking to raise awareness of hidden sugars in daily meals.  
 With just a smartphone camera, users can visualize their sugar intake and manage diabetes risk —  
