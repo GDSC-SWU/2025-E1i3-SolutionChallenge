@@ -1,25 +1,21 @@
 package com.example.solutionchallenge
 
-import android.graphics.Color
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 
 class RecordStep1Fragment : Fragment() {
 
-    private var selectedDateIndex = -1
-    private var selectedMealIndex = -1
-    private var isImageAdded = false
+    private var morningUri: Uri? = null
+    private var lunchUri: Uri? = null
+    private var dinnerUri: Uri? = null
+    private var snackUri: Uri? = null
 
-    private lateinit var nextButton: Button
-    private lateinit var imageBoxContainer: LinearLayout
-    private lateinit var dateContainer: LinearLayout
-    private lateinit var mealButtons: List<Button>
+    private var currentMealType: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,86 +23,36 @@ class RecordStep1Fragment : Fragment() {
     ): View = inflater.inflate(R.layout.fragment_record_step1, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        dateContainer = view.findViewById(R.id.dateIconContainer)
-        imageBoxContainer = view.findViewById(R.id.imageBoxContainer)
-        nextButton = view.findViewById(R.id.nextButton)
+        view.findViewById<Button>(R.id.btnBreakfast).setOnClickListener {
+            currentMealType = "morning"
+            openGallery()
+        }
 
-        val btnBreakfast = view.findViewById<Button>(R.id.btnBreakfast)
-        val btnLunch = view.findViewById<Button>(R.id.btnLunch)
-        val btnDinner = view.findViewById<Button>(R.id.btnDinner)
-        val btnSnack = view.findViewById<Button>(R.id.btnSnack)
-        mealButtons = listOf(btnBreakfast, btnLunch, btnDinner, btnSnack)
+        view.findViewById<Button>(R.id.btnLunch).setOnClickListener {
+            currentMealType = "lunch"
+            openGallery()
+        }
 
-        // ✅ 이미지 로드
-        arguments?.getString("photoUri")?.let { uriString ->
-            val imageView = ImageView(requireContext()).apply {
-                layoutParams = FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.MATCH_PARENT,
-                    FrameLayout.LayoutParams.MATCH_PARENT
-                )
-                scaleType = ImageView.ScaleType.CENTER_CROP
+        view.findViewById<Button>(R.id.btnDinner).setOnClickListener {
+            currentMealType = "dinner"
+            openGallery()
+        }
+
+        view.findViewById<Button>(R.id.btnSnack).setOnClickListener {
+            currentMealType = "snack"
+            openGallery()
+        }
+
+        view.findViewById<Button>(R.id.nextButton).setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("imageUriMorning", morningUri.toString())
+                putString("imageUriLunch", lunchUri.toString())
+                putString("imageUriDinner", dinnerUri.toString())
+                putString("imageUriSnack", snackUri.toString())
             }
-            Glide.with(this).load(Uri.parse(uriString)).into(imageView)
-            (imageBoxContainer.getChildAt(0) as FrameLayout).apply {
-                removeAllViews()
-                addView(imageView)
-            }
-            isImageAdded = true
-        }
 
-        // ✅ 선택 상태 복원
-        selectedDateIndex = arguments?.getInt("selectedDateIndex", -1) ?: -1
-        selectedMealIndex = arguments?.getInt("selectedMealIndex", -1) ?: -1
-
-        if (selectedDateIndex in 0 until dateContainer.childCount) {
-            dateContainer.getChildAt(selectedDateIndex)
-                .setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.brawn_600))
-        }
-
-        if (selectedMealIndex in mealButtons.indices) {
-            mealButtons[selectedMealIndex]
-                .setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.brawn_600))
-        }
-
-        // ✅ 날짜 선택
-        for (i in 0 until dateContainer.childCount) {
-            dateContainer.getChildAt(i).setOnClickListener {
-                selectedDateIndex = i
-                for (j in 0 until dateContainer.childCount) {
-                    dateContainer.getChildAt(j).setBackgroundResource(R.drawable.bg_date_item)
-                }
-                it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.brawn_600))
-                checkIfAllSelected()
-            }
-        }
-
-        // ✅ 식사 선택
-        mealButtons.forEachIndexed { index, button ->
-            button.setOnClickListener {
-                selectedMealIndex = index
-                mealButtons.forEach { it.setBackgroundColor(Color.LTGRAY) }
-                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.brawn_600))
-                checkIfAllSelected()
-            }
-        }
-
-        // ✅ 이미지 박스 클릭 시 메뉴 선택
-        for (i in 0 until imageBoxContainer.childCount) {
-            (imageBoxContainer.getChildAt(i) as FrameLayout).setOnClickListener {
-                val dialog = MenuSelectDialogFragment().apply {
-                    arguments = Bundle().apply {
-                        putInt("selectedDateIndex", selectedDateIndex)
-                        putInt("selectedMealIndex", selectedMealIndex)
-                    }
-                }
-                dialog.show(parentFragmentManager, "MenuSelectDialog")
-            }
-        }
-
-        // ✅ 다음 화면 이동
-        nextButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, RecordStep2Fragment())
+                .replace(R.id.fragmentContainer, RecordStep2Fragment().apply { arguments = bundle })
                 .addToBackStack(null)
                 .commit()
         }
@@ -114,8 +60,43 @@ class RecordStep1Fragment : Fragment() {
         checkIfAllSelected()
     }
 
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK).apply {
+            type = "image/*"
+        }
+        startActivityForResult(intent, 200)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 200 && resultCode == Activity.RESULT_OK) {
+            val uri = data?.data ?: return
+
+            when (currentMealType) {
+                "morning" -> {
+                    morningUri = uri
+                    requireView().findViewById<ImageView>(R.id.imageView1).setImageURI(uri)
+                }
+                "lunch" -> {
+                    lunchUri = uri
+                    requireView().findViewById<ImageView>(R.id.imageView2).setImageURI(uri)
+                }
+                "dinner" -> {
+                    dinnerUri = uri
+                    requireView().findViewById<ImageView>(R.id.imageView3).setImageURI(uri)
+                }
+                "snack" -> {
+                    snackUri = uri
+                    requireView().findViewById<ImageView>(R.id.imageView4).setImageURI(uri)
+                }
+            }
+
+            checkIfAllSelected()
+        }
+    }
+
     private fun checkIfAllSelected() {
-        Log.d("RecordStep1", "날짜=$selectedDateIndex, 식사=$selectedMealIndex, 이미지=$isImageAdded")
-        nextButton.isEnabled = selectedDateIndex != -1 && selectedMealIndex != -1 && isImageAdded
+        val nextButton = requireView().findViewById<Button>(R.id.nextButton)
+        nextButton.isEnabled = morningUri != null && lunchUri != null && dinnerUri != null && snackUri != null
     }
 }

@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.example.solutionchallenge.data.FoodItem
 
 class RecordStep3Fragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_record_step3, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_record_step3, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val mealType = arguments?.getString("mealType") ?: ""
@@ -23,7 +22,7 @@ class RecordStep3Fragment : Fragment() {
         val summaryContainer = view.findViewById<LinearLayout>(R.id.summaryContainer)
         val totalSugarText = view.findViewById<TextView>(R.id.totalSugarText)
 
-        titleText.text = "I'll write it down like this"
+        titleText.text = "AI 분석 결과 요약"
         mealText.text = mealType
 
         var total = 0
@@ -35,20 +34,12 @@ class RecordStep3Fragment : Fragment() {
             total += it.sugar
         }
 
-        totalSugarText.text = "Less: ${total}g"
+        totalSugarText.text = "총 당류: ${total}g"
 
-        val btnOk = view.findViewById<Button>(R.id.btnOk)
-        btnOk.setOnClickListener {
-            // TODO: 서버에 기록 저장 (식사 타입, foodList 등)
-            // ex) POST /save-record
-            // MealType: 🍝 Dinner
-            // FoodList: [Clam Pasta, Pickle, Baguette]
-
-            // 홈화면으로 이동
-            requireActivity().supportFragmentManager.beginTransaction()
+        view.findViewById<Button>(R.id.btnOk).setOnClickListener {
+            parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, HomeFragment())
                 .commit()
         }
-
     }
 }

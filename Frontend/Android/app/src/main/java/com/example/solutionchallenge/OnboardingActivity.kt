@@ -5,14 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+import com.example.solutionchallenge.api.AuthRetrofitClient
+import com.example.solutionchallenge.api.TokenRequest
 import com.example.solutionchallenge.NicknameSetupActivity
+import kotlinx.coroutines.launch
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -23,14 +25,12 @@ class OnboardingActivity : AppCompatActivity() {
         setContentView(R.layout.onboarding_activity)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // ✅ 요게 핵심!!!
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
-
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // Google Sign-In Button click listener
         findViewById<Button>(R.id.googleSignInButton).setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -39,36 +39,34 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("OnboardingActivity", "onActivityResult 호출됨") // ✅ 추가
+        Log.d("OnboardingActivity", "onActivityResult 호출됨")
 
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                Log.d("OnboardingActivity", "구글 계정 가져옴: ${account?.email}") // ✅ 추가
-                firebaseAuthWithGoogle(account)
+                Log.d("OnboardingActivity", "구글 계정 가져옴: ${account?.email}")
+                account?.idToken?.let { sendTokenToServer(it) }
             } catch (e: ApiException) {
-                Log.e("OnboardingActivity", "구글 로그인 실패: ${e.message}") // ✅ 추가
+                Log.e("OnboardingActivity", "구글 로그인 실패: ${e.message}")
             }
         }
     }
 
+    private fun sendTokenToServer(idToken: String) {
+        lifecycleScope.launch {
+            try {
+                val response = AuthRetrofitClient.apiService.login(TokenRequest(idToken))
+                Log.d("OnboardingActivity", "서버 인증 성공: $response")
 
-    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
-        val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // ✅ 로그인 성공 로그
-                    Log.d("OnboardingActivity", "로그인 성공!")
-                    startActivity(Intent(this, NicknameSetupActivity::class.java))
-                } else {
-                    // ❌ 로그인 실패 로그
-                    Log.e("OnboardingActivity", "로그인 실패: ${task.exception}")
-                }
+                // 서버에서 받은 유저 정보(response) 활용 가능
+                startActivity(Intent(this@OnboardingActivity, NicknameSetupActivity::class.java))
+
+            } catch (e: Exception) {
+                Log.e("OnboardingActivity", "서버 인증 실패: ${e.message}")
             }
+        }
     }
-
 
     companion object {
         private const val RC_SIGN_IN = 9001

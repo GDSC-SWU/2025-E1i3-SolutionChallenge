@@ -131,11 +131,9 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 app:layout_columnWeight="1" />
-
         </androidx.gridlayout.widget.GridLayout>
 
-
-        <!-- 🖼 회색 이미지 박스 4개 -->
+        <!-- 🖼 이미지 박스 4개 -->
         <LinearLayout
             android:id="@+id/imageBoxContainer"
             android:layout_width="match_parent"
@@ -144,7 +142,7 @@
             android:gravity="center"
             android:layout_marginTop="24dp">
 
-            <!-- 4개 정사각형 이미지 박스 -->
+            <!-- 박스 1 -->
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="100dp"
@@ -152,19 +150,56 @@
                 android:layout_margin="4dp"
                 android:background="#EEEEEE">
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@android:drawable/ic_input_add" />
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
             </FrameLayout>
 
-            <FrameLayout android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_margin="4dp" android:background="#EEEEEE"/>
-            <FrameLayout android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_margin="4dp" android:background="#EEEEEE"/>
-            <FrameLayout android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_margin="4dp" android:background="#EEEEEE"/>
+            <!-- 박스 2 -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="#EEEEEE">
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+
+            <!-- 박스 3 -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="#EEEEEE">
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+
+            <!-- 박스 4 -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="#EEEEEE">
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
         </LinearLayout>
 
-
-        <!-- Next 버튼 프래그먼트에 연동 필요 -->
+        <!-- 다음 버튼 -->
         <Button
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
@@ -173,7 +208,7 @@
             android:enabled="false"
             android:background="@color/brawn_600"
             android:textColor="@android:color/white"
-            android:layout_marginTop="200dp"/>
+            android:layout_marginTop="200dp" />
 
     </LinearLayout>
 </ScrollView>

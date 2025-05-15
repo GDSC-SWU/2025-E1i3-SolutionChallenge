@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.solutionchallenge.api.MealData
 import com.example.solutionchallenge.api.RetrofitClient
 import com.example.solutionchallenge.api.toMultipartBodyPart
 import kotlinx.coroutines.launch
@@ -17,12 +18,10 @@ class MenuScanStep1Fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_menu_scan_step1, container, false)
-    }
+    ): View = inflater.inflate(R.layout.fragment_menu_scan_step1, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val menuContainer = view.findViewById<LinearLayout>(R.id.menuResultContainer)
+        val foodResultContainer = view.findViewById<LinearLayout>(R.id.foodResultContainer)
         val photoUri = arguments?.getString("photoUri")
 
         if (photoUri.isNullOrEmpty()) {
@@ -46,19 +45,39 @@ class MenuScanStep1Fragment : Fragment() {
                     snack = snack
                 )
 
-                val menuList = response.lunch
-                if (menuList.isNullOrEmpty()) {
-                    Log.e("MenuScan", "'lunch' 분석 결과가 비어 있습니다.")
-                    Toast.makeText(requireContext(), "AI 분석 결과가 없습니다.", Toast.LENGTH_SHORT).show()
+                Log.d("MenuScan", "서버 응답 코드: ${response.code()}")
+                Log.d("MenuScan", "서버 응답 바디: ${response.body()}")
+
+                val resultBody = response.body()
+
+                if (resultBody == null) {
+                    Toast.makeText(requireContext(), "서버 응답이 없습니다.", Toast.LENGTH_SHORT).show()
                     return@launch
                 }
 
-                menuList.forEach {
-                    val itemView = layoutInflater.inflate(R.layout.item_food_result, menuContainer, false)
-                    itemView.findViewById<TextView>(R.id.foodName).text = it.name
-                    itemView.findViewById<TextView>(R.id.foodSugar).text = "${it.sugar}g"
-                    menuContainer.addView(itemView)
+                val meals = resultBody.meals
+
+                fun addMealData(mealName: String, mealData: MealData) {
+                    mealData.detectedClasses.forEach { foodName ->
+                        val sugarInfo = mealData.foodSugarData[foodName]
+                        val sugarValue = when (sugarInfo) {
+                            is Number -> sugarInfo.toInt()
+                            is String -> Regex("""\d+""").find(sugarInfo)?.value?.toIntOrNull() ?: 0
+                            else -> 0
+                        }
+
+                        val itemView = layoutInflater.inflate(R.layout.item_food_result, foodResultContainer, false)
+                        itemView.findViewById<TextView>(R.id.foodName).text = "$mealName - $foodName"
+                        itemView.findViewById<TextView>(R.id.foodSugar).text = "${sugarValue}g"
+
+                        foodResultContainer.addView(itemView)
+                    }
                 }
+
+                addMealData("Breakfast", meals.morning)
+                addMealData("Lunch", meals.lunch)
+                addMealData("Dinner", meals.dinner)
+                addMealData("Snack", meals.snack)
 
             } catch (e: Exception) {
                 Log.e("MenuScan", "API 호출 실패", e)

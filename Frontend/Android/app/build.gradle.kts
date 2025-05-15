@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -52,7 +51,6 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.3.0")
     implementation("androidx.camera:camera-view:1.3.0")
     implementation("androidx.gridlayout:gridlayout:1.1.0")
-    implementation("com.google.firebase:firebase-auth:22.3.0") // ✅ Firebase Auth
     implementation("com.google.android.gms:play-services-auth:20.7.0") // ✅ Google 로그인
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0") //막대 차트 플러그인
     implementation("com.kizitonwose.calendar:view:2.4.0")//달력플러그인
