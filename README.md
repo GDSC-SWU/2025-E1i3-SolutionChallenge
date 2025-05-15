@@ -1,12 +1,12 @@
 # 🩺 2025-SweetCheck-SolutionChallenge
-# Service Introduction
+## Service Introduction
 Many early-risk diabetics avoid traditional monitoring tools, thinking, *"I'm not sick yet."*  
 **SweetCheck** uses simple photo-based tracking to raise awareness of hidden sugars in daily meals.  
 With just a smartphone camera, users can visualize their sugar intake and manage diabetes risk —  
 **no devices, no hassle, just awareness.**
 
 Affordable, accessible, and built for everyday use — especially for low-income families.
-# Our Goal : Innovating Wellness with Simplicity
+## Our Goal : Innovating Wellness with Simplicity
 <table>
   <tr>
     <td style="width: 150px;">
@@ -33,16 +33,16 @@ Our vision:
 By lowering entry barriers and raising awareness,    
 **SweetCheck** empowers users to take early action and build healthier habits.
 
-# Tech stack
+## Tech stack
 <img src="https://github.com/user-attachments/assets/2fe12ffd-49f9-4701-9080-888a0dc57ff2" width="800">
 
 
-# Demo video
+## Demo video
 
-# How to Use
+## How to Use
 
 
-# Team Members
+## Team Members
 ### **Team Name: E1i3**
 |                | Chaeyeon Kim                               | Kyuwon Ha          | Sohyun Park        | Jieun Lee          |
 |----------------|---------------------------------------------|---------------------|---------------------|---------------------|
