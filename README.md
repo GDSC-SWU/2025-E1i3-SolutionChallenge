@@ -8,9 +8,8 @@ Many early-risk diabetics avoid traditional monitoring tools, thinking, *"I'm no
 With just a smartphone camera, users can visualize their sugar intake and manage diabetes risk 
 **no devices, no hassle, just awareness.**
 
-Affordable, accessible, and built for everyday use — especially for low-income families.   
-
-    
+Affordable, accessible, and built for everyday use — especially for low-income families.
+<br>
 ## Our Goal : Innovating Wellness with Simplicity
 <table>
   <tr>
