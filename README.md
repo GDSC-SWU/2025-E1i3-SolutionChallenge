@@ -25,7 +25,9 @@ Affordable, accessible, and built for everyday use — especially for low-income
     </td>
   </tr>
 </table>
+![6](https://github.com/user-attachments/assets/29b23070-cd5f-4aa9-a5bc-20ac1919eefe)
 
+   
 Our vision:
 
 - 🤖 **AI-powered scanning & auto-recording** for effortless meal tracking  
