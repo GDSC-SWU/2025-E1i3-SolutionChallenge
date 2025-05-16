@@ -40,7 +40,7 @@ By lowering entry barriers and raising awareness,
 
 
 ## Demo video
-[![Sweet Check](http://img.youtube.com/vi/BZFesPNiX5U/0.jpg)](https://youtu.be/BZFesPNiX5U)
+[![Sweet Check](http://img.youtube.com/vi/BZFesPNiX5U/maxresdefault.jpg)](https://youtu.be/watch?v=BZFesPNiX5U)
 
 ## How to Use
 
