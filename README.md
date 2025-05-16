@@ -4,7 +4,7 @@
 
 Many early-risk diabetics avoid traditional monitoring tools, thinking, *"I'm not sick yet."*  
 **SweetCheck** uses simple photo-based tracking to raise awareness of hidden sugars in daily meals.  
-With just a smartphone camera, users can visualize their sugar intake and manage diabetes risk —  
+With just a smartphone camera, users can visualize their sugar intake and manage diabetes risk 
 **no devices, no hassle, just awareness.**
 
 Affordable, accessible, and built for everyday use — especially for low-income families.
