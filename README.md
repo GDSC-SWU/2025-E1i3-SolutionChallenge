@@ -1,4 +1,4 @@
-![Frame-2](https://github.com/user-attachments/assets/0845f515-b0ab-4d48-9ba2-a2de897d13d4)# 🩺 2025-SweetCheck-SolutionChallenge
+# 🩺 2025-SweetCheck-SolutionChallenge
 ## Service Introduction
 ![Title](https://github.com/user-attachments/assets/2735d3b3-d210-41cc-b7e6-aca1db0155b6)
 
