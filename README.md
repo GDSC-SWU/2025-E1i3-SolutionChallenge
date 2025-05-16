@@ -1,6 +1,7 @@
 # 🩺 2025-SweetCheck-SolutionChallenge
 ## Service Introduction
-![Title](https://github.com/user-attachments/assets/2969691d-b48e-4826-a01b-80aac39f5cff)
+![Title](https://github.com/user-attachments/assets/2735d3b3-d210-41cc-b7e6-aca1db0155b6)
+
 
 Many early-risk diabetics avoid traditional monitoring tools, thinking, *"I'm not sick yet."*  
 **SweetCheck** uses simple photo-based tracking to raise awareness of hidden sugars in daily meals.  
