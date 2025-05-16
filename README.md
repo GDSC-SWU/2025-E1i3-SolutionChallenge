@@ -9,6 +9,7 @@ With just a smartphone camera, users can visualize their sugar intake and manage
 **no devices, no hassle, just awareness.**
 
 Affordable, accessible, and built for everyday use — especially for low-income families.   
+   
 ## Our Goal : Innovating Wellness with Simplicity
 <table>
   <tr>
