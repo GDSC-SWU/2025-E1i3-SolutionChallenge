@@ -48,9 +48,9 @@ By lowering entry barriers and raising awareness,
 [![Sweet Check](https://github.com/user-attachments/assets/2969691d-b48e-4826-a01b-80aac39f5cff)](https://www.youtube.com/watch?v=BZFesPNiX5U)
 
 ## How to Use
-![Uploading gif_1.gif…]()
-![Uploading gif_2.gif…]()
-![Uploading gif_3.gif…]()
+![gif_1](https://github.com/user-attachments/assets/ce53ac89-8345-4adf-af48-b5531379bd1b)
+![gif_2](https://github.com/user-attachments/assets/ce53ac89-8345-4adf-af48-b5531379bd1b)
+![gif_3](https://github.com/user-attachments/assets/ce53ac89-8345-4adf-af48-b5531379bd1b)
 ![gif_4](https://github.com/user-attachments/assets/ce53ac89-8345-4adf-af48-b5531379bd1b)
 
 
