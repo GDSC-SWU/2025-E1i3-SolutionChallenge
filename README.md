@@ -49,7 +49,8 @@ By lowering entry barriers and raising awareness,
 
 ## How to Use
 
-![0518 (1)(1)](https://github.com/user-attachments/assets/32a87aa3-c983-4675-9f3b-19c9d0922800)
+![0518 (1)(1) (1) (1)-min](https://github.com/user-attachments/assets/4293863b-b21b-46c5-b700-381bf6b6663d)
+
 
 <br>
 <img src="https://github.com/user-attachments/assets/024c05d5-a4fd-410d-89c9-a8c909083100" width="400"/>
