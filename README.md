@@ -48,11 +48,12 @@ By lowering entry barriers and raising awareness,
 [![Sweet Check](https://github.com/user-attachments/assets/2969691d-b48e-4826-a01b-80aac39f5cff)](https://www.youtube.com/watch?v=BZFesPNiX5U)
 
 ## How to Use
-![Frame](https://github.com/user-attachments/assets/cfe66f30-f416-4ad7-b36c-7ee17bde7f7d)
 
-![Frame-1](https://github.com/user-attachments/assets/8c97b193-e48a-4672-bd19-00999f4513b6)
+![gif1](https://github.com/user-attachments/assets/9b4fe10e-7c52-4f57-9588-ad5b0312a4de)
 
-![Frame-2](https://github.com/user-attachments/assets/6c5f2423-87a6-4f8a-9793-43ec0123a26d)
+![gif_2 (1)](https://github.com/user-attachments/assets/024c05d5-a4fd-410d-89c9-a8c909083100)
+
+![gif3](https://github.com/user-attachments/assets/7c64285e-9b1a-4d61-8a70-a9d8c9e964c6)
 
 ![gif_4](https://github.com/user-attachments/assets/3c5e0517-f092-484d-bf03-297cbe8afbac)
 
