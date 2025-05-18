@@ -50,9 +50,13 @@ By lowering entry barriers and raising awareness,
 ## How to Use
 
 <img src="https://github.com/user-attachments/assets/9b4fe10e-7c52-4f57-9588-ad5b0312a4de" width="400"/>
+<br>
 <img src="https://github.com/user-attachments/assets/024c05d5-a4fd-410d-89c9-a8c909083100" width="400"/>
+<br>
 <img src="https://github.com/user-attachments/assets/7c64285e-9b1a-4d61-8a70-a9d8c9e964c6" width="400"/>
+<br>
 <img src="https://github.com/user-attachments/assets/3c5e0517-f092-484d-bf03-297cbe8afbac" width="400"/>
+<br>
 
 
 ## Team Members
